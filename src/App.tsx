@@ -1,12 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import ReporteTaller from "./pages/ReporteTaller";
+
 function App() {
   return (
     <>
       <BrowserRouter>
-        <main className="container mx-auto sm:px-10 px-4">
+        <main className="max-w-[1000px] mx-auto">
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
+            <Route path="/reporte-taller/:reportId" element={<ReporteTaller />}></Route>
+            
             <Route
               path="*"
               element={
