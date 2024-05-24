@@ -3,6 +3,7 @@ import "../css/normalize.css";
 import "../css/style.css";
 import "../css/reporteVehiculo.css";
 import aetoLogo from "../assets/aeto-logo.svg";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 import { Fragment, useRef } from "react";
 import { useParams } from "react-router-dom";
@@ -12,19 +13,19 @@ import useGetWorkshopReport from "../hooks/useGetWorkshopReport";
 import { TimeDifferenceBetweenDates } from "../utils/TimeDifferenceBetweenDates";
 
 const ReporteTaller = () => {
-  const { reportId } = useParams()
+  const { reportId } = useParams();
   const { report } = useGetWorkshopReport(reportId);
 
   const contentToPrint = useRef(null);
-  const handlePrint = useReactToPrint({documentTitle: `Reporte taller ${report?.numero_economico}`});
-
-
+  const handlePrint = useReactToPrint({
+    documentTitle: `Reporte taller ${report?.numero_economico}`,
+  });
 
   return (
     <>
       <div className="w-full flex justify-end gap-[2rem]">
         <button
-        className="bg-black text-white rounded-2xl hover:bg-gray-800 p-3 my-2 "
+          className="bg-black text-white rounded-2xl hover:bg-gray-800 p-3 my-2 "
           onClick={() => {
             handlePrint(null, () => contentToPrint.current);
           }}
@@ -87,13 +88,31 @@ const ReporteTaller = () => {
             <div className="report__card">
               <div className="report__card-title">Duración</div>
               <div className="report__card-body">
-                {TimeDifferenceBetweenDates(report.fecha_inicio, report.fecha_final)}
-                
+                {TimeDifferenceBetweenDates(
+                  report.fecha_inicio,
+                  report.fecha_final
+                )}
               </div>
             </div>
           </nav>
         </header>
         <main className="main__container-config ejes__CANTIDADDEEJESHERE">
+          <div className="checks__container justify-center flex mt-3 gap-5">
+            {report.inflado && (
+              <div className="inflado flex justify-center">
+                <CheckCircleOutlineIcon />
+                Inflado
+              </div>
+            )}
+
+            {report.alineacion && (
+              <div className="alineado flex justify-center">
+                <CheckCircleOutlineIcon />
+                Alineado
+              </div>
+            )}
+          </div>
+
           <div className="config__container">
             <img
               src="https://i.gyazo.com/c6b721b4b2d030f9f803ee4127cbe7de.png"
@@ -117,6 +136,33 @@ const ReporteTaller = () => {
                   </tr>
                 </thead>
                 <tbody>
+                  {report.alineacion && (
+                    <tr>
+                      <td className="td-table">
+                        Vehiculo {report.numero_economico}
+                      </td>
+                      <td className="td-table">El vehículo se alineó</td>
+                    </tr>
+                  )}
+                  {report.inflado && (
+                    <tr>
+                      <td className="td-table">
+                        Vehiculo {report.numero_economico}
+                      </td>
+                      <td className="td-table">El vehículo se infló</td>
+                    </tr>
+                  )}
+                  {report.cambio_hubometro && (
+                    <tr>
+                      <td className="td-table">
+                        Vehiculo {report.numero_economico}
+                      </td>
+                      <td className="td-table">
+                        Nuevo kilometraje de hubometro:{" "}
+                        {report.km_cambio_hubometro}{" "}
+                      </td>
+                    </tr>
+                  )}
                   {report.service_tires?.map((llanta) => (
                     <Fragment key={`${llanta.id}`}>
                       {llanta.balanceado && (
@@ -167,6 +213,12 @@ const ReporteTaller = () => {
                           <td className="td-table">{llanta.posicion}</td>
 
                           <td className="td-table">Se marcó la llanta</td>
+                        </tr>
+                      )}
+                      {llanta.rotar && (
+                        <tr>
+                          <td className="td-table">{llanta.posicion}</td>
+                          <td className="td-table">La llanta de número económico: {llanta.numero_economico} se rotó con la llanta: {llanta.rotar_numero_economico} de la posición: {llanta.rotar_posicion}</td>
                         </tr>
                       )}
                     </Fragment>

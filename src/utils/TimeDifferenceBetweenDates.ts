@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-// Returns difference in minutes hours or days depending de difference betweeen two dates
+// Returns difference in minutes hours or days depending the difference betweeen two dates
 export const TimeDifferenceBetweenDates = (date1:string, date2:string)=> {
   const difference = moment(date2).diff(moment(date1));
   const duration = moment.duration(difference);
