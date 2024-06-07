@@ -221,6 +221,18 @@ const ReporteTaller = () => {
                           <td className="td-table">La llanta de número económico: {llanta.numero_economico} se rotó con la llanta: {llanta.rotar_numero_economico} de la posición: {llanta.rotar_posicion}</td>
                         </tr>
                       )}
+                      {llanta.desmontaje && (
+                        <tr>
+                          <td className="td-table">{llanta.posicion}</td>
+                          <td className="td-table">La llanta {llanta.numero_economico} se desmontó en el almacen {llanta.desmontar_inventario_llanta} y se colocó la llanta {llanta.desmontar_llanta_economico}</td>
+                        </tr>
+                      )}
+                      {llanta.servicio_carretero && (
+                        <tr>
+                          <td className="td-table">{llanta.posicion}</td>
+                          <td className="td-table">Se le realizó un servicio carretero a la llanta {llanta.numero_economico}</td>
+                        </tr>
+                      )}
                     </Fragment>
                   ))}
                 </tbody>
