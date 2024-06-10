@@ -236,7 +236,7 @@ img {
 
 /* colors */
 
-.tire__tag.good {
+.tire__tag.good, .tire__tag.blue{
   background-color: var(--colorv53);
 }
 
@@ -246,6 +246,9 @@ img {
 
 .tire__tag.bad {
   background-color: var(--colorv85);
+}
+.tire__tag.red {
+  background-color: red;
 }
 
 .gray {

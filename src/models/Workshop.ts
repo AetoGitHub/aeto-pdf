@@ -20,6 +20,7 @@ export interface WorkshopReport {
   modelo: string;
   numero_economico: string;
   service_tires: ServiceTire[];
+  tires: Llanta[][]
   ubicacion: number;
   ubicacion_nombre: string;
   usuario: number;
@@ -47,13 +48,22 @@ export interface Llanta {
   numero_economico: string;
   posicion: string;
   presion_actual: number;
+  positionString: string
   producto: string;
   profundidad_central: number | null;
   profundidad_derecha: number | null;
   profundidad_izquierda: number | null;
   tipo_de_eje: string;
 }
-
+export interface Tire extends Llanta {
+  position: {
+    row:      number;
+    position: string;
+    side:     string;
+  };
+  positionString: string;
+} 
+ 
 export interface InchEjes {
   ejes: { after: string | number; before: string | number }[];
   vehiculo: number;

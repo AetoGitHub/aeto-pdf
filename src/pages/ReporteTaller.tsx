@@ -11,6 +11,9 @@ import { useReactToPrint } from "react-to-print";
 
 import useGetWorkshopReport from "../hooks/useGetWorkshopReport";
 import { TimeDifferenceBetweenDates } from "../utils/TimeDifferenceBetweenDates";
+import SingleTireAxle from "../components/SingleTireAxle";
+import DoubleTireAxle from "../components/DoubleTireAxle";
+import QuadTireAxle from "../components/QuadTireAxle";
 
 const ReporteTaller = () => {
   const { reportId } = useParams();
@@ -34,7 +37,7 @@ const ReporteTaller = () => {
         </button>
       </div>
       <div ref={contentToPrint}>
-        <header ref={contentToPrint} className="report__head">
+        <header ref={contentToPrint} className="report__head mb-6">
           <div className="flex-row space-between">
             <h1 className="report__title">
               Reporte de servicios en taller - {report.numero_economico}
@@ -96,7 +99,7 @@ const ReporteTaller = () => {
             </div>
           </nav>
         </header>
-        <main className="main__container-config ejes__CANTIDADDEEJESHERE">
+        <main className="main__container-config">
           <div className="checks__container justify-center flex mt-3 gap-5">
             {report.inflado && (
               <div className="inflado flex justify-center">
@@ -114,11 +117,11 @@ const ReporteTaller = () => {
           </div>
 
           <div className="config__container">
-            <img
-              src="https://i.gyazo.com/c6b721b4b2d030f9f803ee4127cbe7de.png"
-              alt="CONFIGURACION AQUII"
-              className="mt-5"
-            />
+            {report.tires?.map((eje, i)=> {
+              if (eje.length === 1) return <SingleTireAxle eje={eje} key={i} />
+              if (eje.length === 2) return <DoubleTireAxle eje={eje} key={i} />
+              if (eje.length === 4) return <QuadTireAxle eje={eje} key={i} />
+            })}
           </div>
         </main>
 
@@ -218,19 +221,31 @@ const ReporteTaller = () => {
                       {llanta.rotar && (
                         <tr>
                           <td className="td-table">{llanta.posicion}</td>
-                          <td className="td-table">La llanta de número económico: {llanta.numero_economico} se rotó con la llanta: {llanta.rotar_numero_economico} de la posición: {llanta.rotar_posicion}</td>
+                          <td className="td-table">
+                            La llanta de número económico:{" "}
+                            {llanta.numero_economico} se rotó con la llanta:{" "}
+                            {llanta.rotar_numero_economico} de la posición:{" "}
+                            {llanta.rotar_posicion}
+                          </td>
                         </tr>
                       )}
                       {llanta.desmontaje && (
                         <tr>
                           <td className="td-table">{llanta.posicion}</td>
-                          <td className="td-table">La llanta {llanta.numero_economico} se desmontó en el almacen {llanta.desmontar_inventario_llanta} y se colocó la llanta {llanta.desmontar_llanta_economico}</td>
+                          <td className="td-table">
+                            La llanta {llanta.numero_economico} se desmontó en
+                            el almacen {llanta.desmontar_inventario_llanta} y se
+                            colocó la llanta {llanta.desmontar_llanta_economico}
+                          </td>
                         </tr>
                       )}
                       {llanta.servicio_carretero && (
                         <tr>
                           <td className="td-table">{llanta.posicion}</td>
-                          <td className="td-table">Se le realizó un servicio carretero a la llanta {llanta.numero_economico}</td>
+                          <td className="td-table">
+                            Se le realizó un servicio carretero a la llanta{" "}
+                            {llanta.numero_economico}
+                          </td>
                         </tr>
                       )}
                     </Fragment>
