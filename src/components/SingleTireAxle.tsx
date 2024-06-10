@@ -15,7 +15,7 @@ const SingleTireAxle = ({eje} : {eje:Llanta[]}) => {
         <div className={`tire__tag up ${eje[0]?.color_middle}`}>
             {eje[0]?.presion_actual}
         </div>
-        <span className="icon-llanta-outline"></span>
+        <span className="icon-llanta-outline "></span>
         <div className={`tire__tag good down ${eje[0]?.color_buttom}`}>
           {eje[0]?.profundidad_central}
         </div>

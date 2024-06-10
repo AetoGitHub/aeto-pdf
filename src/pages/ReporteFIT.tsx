@@ -1,19 +1,22 @@
 import "../css/base.css";
 import "../css/normalize.css";
-import "../css/style.css";
+import "../css/icomoon/style.css";
 import "../css/reporteVehiculo.css";
 
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+import useGetResumenFlotaPorVehiculo from "../hooks/useGetResumenFlotaPorVehiculo";
 
 
 const ReporteFIT = () => {
 //   const { id } = useParams();
 
+  useGetResumenFlotaPorVehiculo()
   const contentToPrint = useRef(null);
   const handlePrint = useReactToPrint({
     documentTitle: `Reporte taller FIT`,
   });
+
 
   return (
     <>
@@ -28,7 +31,7 @@ const ReporteFIT = () => {
         </button>
       </div>
       <div ref={contentToPrint}>
-          
+          <div>asas</div>
       </div>
     </>
   );

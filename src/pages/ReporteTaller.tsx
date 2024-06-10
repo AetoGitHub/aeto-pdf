@@ -1,6 +1,6 @@
 import "../css/base.css";
 import "../css/normalize.css";
-import "../css/style.css";
+import "../css/icomoon/style.css";
 import "../css/reporteVehiculo.css";
 import aetoLogo from "../assets/aeto-logo.svg";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
@@ -37,7 +37,7 @@ const ReporteTaller = () => {
         </button>
       </div>
       <div ref={contentToPrint}>
-        <header ref={contentToPrint} className="report__head mb-6">
+        <header ref={contentToPrint} className="report__head mb-10">
           <div className="flex-row space-between">
             <h1 className="report__title">
               Reporte de servicios en taller - {report.numero_economico}
@@ -100,7 +100,7 @@ const ReporteTaller = () => {
           </nav>
         </header>
         <main className="main__container-config">
-          <div className="checks__container justify-center flex mt-3 gap-5">
+          <div className="checks__container justify-center flex mt-3 mb-10 gap-5">
             {report.inflado && (
               <div className="inflado flex justify-center">
                 <CheckCircleOutlineIcon />
@@ -117,10 +117,10 @@ const ReporteTaller = () => {
           </div>
 
           <div className="config__container">
-            {report.tires?.map((eje, i)=> {
-              if (eje.length === 1) return <SingleTireAxle eje={eje} key={i} />
-              if (eje.length === 2) return <DoubleTireAxle eje={eje} key={i} />
-              if (eje.length === 4) return <QuadTireAxle eje={eje} key={i} />
+            {report.tires?.map((eje, i) => {
+              if (eje.length === 1) return <SingleTireAxle eje={eje} key={i} />;
+              if (eje.length === 2) return <DoubleTireAxle eje={eje} key={i} />;
+              if (eje.length === 4) return <QuadTireAxle eje={eje} key={i} />;
             })}
           </div>
         </main>
@@ -166,6 +166,51 @@ const ReporteTaller = () => {
                       </td>
                     </tr>
                   )}
+                  {report.alineacion &&
+                    report.inch_ejes.ejes[1] &&
+                    report.inch_ejes.ejes[1]?.before !== "" && (
+                      <tr>
+                        <td className="td-table">Eje N° 1</td>
+                        <td className="td-table">
+                          Medida previa a la alineación: {report.inch_ejes.ejes[1]?.before},
+                          Medida luego de la alineación: {report.inch_ejes.ejes[1]?.after}
+                        </td>
+                      </tr>
+                    )}
+                  {report.alineacion &&
+                    report.inch_ejes.ejes[2] &&
+                    report.inch_ejes.ejes[2]?.before !== "" && (
+                      <tr>
+                        <td className="td-table">Eje N° 2</td>
+                        <td className="td-table">
+                          Medida previa a la alineación: {report.inch_ejes.ejes[2]?.before},
+                          Medida luego de la alineación: {report.inch_ejes.ejes[2]?.after}
+                        </td>
+                      </tr>
+                    )}
+                  {report.alineacion &&
+                    report.inch_ejes.ejes[3] &&
+                    report.inch_ejes.ejes[3]?.before !== "" && (
+                      <tr>
+                        <td className="td-table">Eje N° 3</td>
+                        <td className="td-table">
+                          Medida previa a la alineación: {report.inch_ejes.ejes[3]?.before},
+                          Medida luego de la alineación: {report.inch_ejes.ejes[3]?.after}
+                        </td>
+                      </tr>
+                    )}
+                  {report.alineacion &&
+                    report.inch_ejes.ejes[4] &&
+                    report.inch_ejes.ejes[4]?.before !== "" && (
+                      <tr>
+                        <td className="td-table">Eje N° 4</td>
+                        <td className="td-table">
+                          Medida previa a la alineación: {report.inch_ejes.ejes[4]?.before},
+                          Medida luego de la alineación: {report.inch_ejes.ejes[4]?.after}
+                        </td>
+                      </tr>
+                    )}
+
                   {report.service_tires?.map((llanta) => (
                     <Fragment key={`${llanta.id}`}>
                       {llanta.balanceado && (
