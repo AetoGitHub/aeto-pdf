@@ -1,4 +1,4 @@
-import { Llanta } from '../models/Workshop'
+import { Llanta } from '../../models/Workshop'
 
 const SingleTireAxle = ({eje} : {eje:Llanta[]}) => {
   return (

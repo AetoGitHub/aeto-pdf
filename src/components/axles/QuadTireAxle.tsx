@@ -1,4 +1,4 @@
-import { Llanta } from "../models/Workshop";
+import { Llanta } from "../../models/Workshop";
 
 const QuadTireAxle = ({eje} : {eje:Llanta[]}) => {
   return (

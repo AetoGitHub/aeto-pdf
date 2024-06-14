@@ -9,11 +9,11 @@ import { Fragment, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
-import useGetWorkshopReport from "../hooks/useGetWorkshopReport";
+import useGetWorkshopReport from "../hooks/reporte-taller/useGetWorkshopReport";
 import { TimeDifferenceBetweenDates } from "../utils/TimeDifferenceBetweenDates";
-import SingleTireAxle from "../components/SingleTireAxle";
-import DoubleTireAxle from "../components/DoubleTireAxle";
-import QuadTireAxle from "../components/QuadTireAxle";
+import SingleTireAxle from "../components/axles/SingleTireAxle";
+import DoubleTireAxle from "../components/axles/DoubleTireAxle";
+import QuadTireAxle from "../components/axles/QuadTireAxle";
 
 const ReporteTaller = () => {
   const { reportId } = useParams();

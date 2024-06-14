@@ -1,0 +1,475 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-auto {
+  flex: 1 1 50%;
+}
+
+.table-without-border td,
+.table-without-border th {
+  border: none;
+}
+
+img {
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.25));
+  width: 100%;
+  height: auto;
+}
+
+.car-info {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+}
+
+.report-header {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+}
+
+.report-header__table {
+  display: inline-table;
+  flex-grow: 1;
+}
+
+th,
+td {
+  border: thin solid #222;
+  padding: 0.25rem;
+}
+
+.vehicle-table {
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.table-tire__wrapper {
+  padding: 0;
+}
+
+.table-tire__tire {
+  width: 100%;
+}
+
+.table-tire__tire td {
+  border: none;
+}
+
+.table-tire__tire tr:first-child {
+  border-bottom: thin solid #222;
+}
+
+/* VEHICLE */
+
+.car {
+  margin: 1rem;
+  min-width: 300px;
+  width: 100%;
+}
+.car-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.car-row {
+  align-items: center;
+  gap: 0.25rem;
+  display: flex;
+  justify-content: center;
+  flex-flow: row nowrap;
+  margin-bottom: 1rem;
+}
+
+.car-row.sp2 {
+  gap: 3.5rem;
+}
+
+.car-tire {
+  position: relative;
+}
+
+.tire-content {
+  display: flex;
+  flex-flow: column nowrap;
+  font-weight: 500;
+  gap: 0.25rem;
+  inset: 0;
+  justify-content: space-between;
+  position: absolute;
+  text-align: center;
+}
+
+.tire-content__tag {
+  background-color: gray;
+  border-radius: 0.25rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.25rem;
+}
+
+.tire-content__tag.good {
+  background-color: #009345;
+}
+
+.tire-content__tag.medium {
+  background-color: #dbc002;
+}
+
+.tire-content__tag.bad {
+  background-color: #f0412c;
+}
+
+.tire-sp {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.car-tire .icon-llanta-outline {
+  font-size: 6rem;
+}
+
+.tire-sp .car-tire {
+  transform: rotate(90deg);
+}
+
+.tire-sp .car-tire .tire-content {
+  justify-content: center;
+  transform: rotate(-90deg);
+}
+
+.car-axle {
+  background-color: gray;
+  height: 0.45rem;
+  flex-grow: 1;
+}
+
+.notes-box {
+  min-height: 350px;
+}
+
+.observations-box,
+.notes-box {
+  border: thin solid #222;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.observations-box {
+  min-height: 300px;
+}
+
+.firms-box {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.firms-box > div {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.section-header {
+  background-color: #aaaaaa;
+  padding: 1rem 0.5rem;
+  margin: 1rem 0;
+}
+
+.section-header * {
+  margin: 0;
+}
+
+.sub-header {
+  border-top: thin solid #333;
+  border-bottom: thin solid #333;
+  padding: 1rem 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sub-header > * {
+  margin: 0;
+}
+
+.sub-header h5 {
+  font-size: 0.85rem;
+}
+
+.firms-box p {
+  margin: 0;
+}
+
+.mb-1 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 2rem !important;
+}
+
+hr {
+  border-bottom-color: #333;
+}
+
+tr {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  -webkit-break-inside: avoid;
+}
+
+.logo {
+  width: 500px;
+}
+
+.page {
+  page-break-after: always;
+  break-after: always;
+  -webkit-break-after: always;
+}
+
+.main-page {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  height: 100%;
+  page-break-after: always;
+  break-after: always;
+  -webkit-break-after: always;
+  margin-top: .5rem;
+}
+
+.vehicle-inspection__column {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2rem;
+  max-width: 750px;
+}
+
+.page-break-before {
+  break-after: always;
+  page-break-after: always;
+  -webkit-break-after: always;
+}
+
+.car-column {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.75rem;
+  flex: 1 1 auto;
+  margin-bottom: 1rem;
+  max-width: 300px;
+}
+
+.car-column .car-row {
+  margin-bottom: 0;
+  break-after: avoid;
+  page-break-after: avoid;
+  -webkit-break-after: avoid;
+}
+
+.car-tire__info.top {
+  border-bottom: thin solid #222;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.car-tire__info {
+  flex: 1 1 50%;
+}
+
+.car-tire__info.bottom {
+  border-top: thin solid #222;
+  padding-top: 0.5rem;
+  margin-top: 0.15rem;
+}
+.not-aligned-left{
+  transform: rotate(0.02turn);
+}
+.not-aligned-right{
+  transform: rotate(-0.02turn);
+}
+.icon-llanta-outline.top::after {
+  content: '';
+  height: 10px;
+  width: 1px;
+  background: #222;
+  display: block;
+  position: absolute;
+  top: -11px;
+  left: 50%;
+}
+
+.icon-llanta-outline.bottom::after {
+  content: '';
+  height: 10px;
+  width: 1px;
+  background: #222;
+  display: block;
+  position: absolute;
+  bottom: -11px;
+  left: 50%;
+}
+
+/* UTLITIES */
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-start {
+  align-items: start;
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: end;
+  align-items: flex-end;
+}
+
+.print-nav {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.grid-4 {
+  display: grid;
+  /* flex-flow: row wrap; */
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  page-break-after: always;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-col-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.image-container {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.image-container img {
+  object-fit: contain;
+  max-height: 500px;
+}
+
+.image-container a {
+  font-size: 1.5rem;
+}
+
+td:has([class^='icon']) {
+  text-align: center;
+}
+
+td span[class^='icon'] {
+  font-size: 3rem;
+}
+
+.none {
+  display: none !important;
+}
+
+.no-data-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  font-size: 2rem;
+  font-weight: bold;
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.graphics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 350px;
+  gap: 1rem;
+  page-break-after: avoid;
+}
+
+.graphics > * {
+  position: relative;
+  overflow: hidden;
+}
+
+.chart {
+  position: absolute;
+  inset: 0;
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { WorkshopReport } from "../models/Workshop";
-import { getVehicleDiagram } from "../utils/getVehicleDiagram";
+import { WorkshopReport } from "../../models/Workshop";
+import { getVehicleDiagram } from "../../utils/getVehicleDiagram";
 
 const useGetWorkshopReport =  (id: string | undefined) => {
   const [report, setReport] = useState<WorkshopReport>({});
