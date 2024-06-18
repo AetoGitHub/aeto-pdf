@@ -8,20 +8,22 @@ import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import LoadingIndicator from "../components/LoadingIndicator";
 import { useSearchParams } from "react-router-dom";
+import { Chart } from "react-google-charts";
 
 /* hooks */
+import useGetPortadaInfo from "../hooks/reporte-FIT/useGetPortadaInfo";
 import useGetResumenFlotaPorVehiculo from "../hooks/reporte-FIT/useGetResumenFlotaPorVehiculo";
 import useGetResumenLocalizacionPorVehiculo from "../hooks/reporte-FIT/useGetResumenLocalizacionPorVehiculo";
 import useGetResumenObservaciones from "../hooks/reporte-FIT/useGetResumenObservaciones";
-// import useGetDimensionesLlanta from "../hooks/reporte-FIT/useGetDimensionesLlanta";
-// import useGetMarcasLlanta from "../hooks/reporte-FIT/useGetMarcasLlanta";
-// import useGetVidaLlanta from "../hooks/reporte-FIT/useGetVidaLlanta";
-// import useGetAnalisisProfundidad from "../hooks/reporte-FIT/useGetAnalisisProfundidad";
+import useGetDimensionesLlanta from "../hooks/reporte-FIT/useGetDimensionesLlanta";
+import useGetMarcasLlanta from "../hooks/reporte-FIT/useGetMarcasLlanta";
+import useGetVidaLlanta from "../hooks/reporte-FIT/useGetVidaLlanta";
+import useGetAnalisisPresion from "../hooks/reporte-FIT/useGetAnalisisPresion";
+import useGetPresionPorTipoEje from "../hooks/reporte-FIT/useGetPresionPorTipoEje";
+import useGetAnalisisProfundidad from "../hooks/reporte-FIT/useGetAnalisisProfundidad";
 
 const ReporteFIT = () => {
-  const [searchParams] = useSearchParams();
-  const startDate = searchParams.get("start_date");
-  const endDate = searchParams.get("end_date");
+  const { results: portadaInfo, state: portadaInfoState } = useGetPortadaInfo();
 
   const {
     results: resumenFlotaPorVehiculo,
@@ -31,12 +33,26 @@ const ReporteFIT = () => {
 
   const { results: resumenLocalizacion, state: resumenLocalizacionState } =
     useGetResumenLocalizacionPorVehiculo();
+
   const { results: resumenObservaciones, state: resumenObservacionesState } =
     useGetResumenObservaciones();
-  // const {results: dimensionesLlanta, state: dimensionesLlantaState} = useGetDimensionesLlanta()
-  // const {results: marcasLlanta, state: marcasLlantaState} = useGetMarcasLlanta()
-  // const {results: vidaLLanta, state: vidaLLantaState} = useGetVidaLlanta()
-  // const {results: analisisProfundidad, state: analisisProfundidadState} = useGetAnalisisProfundidad()
+
+  const { results: dimensionesLlanta, state: dimensionesLlantaState } =
+    useGetDimensionesLlanta();
+
+  const { results: marcasLlanta, state: marcasLlantaState } =
+    useGetMarcasLlanta();
+
+  const { results: analisisPresion, state: analisisPresionState } =
+    useGetAnalisisPresion();
+
+  const { results: vidaLLanta, state: vidaLLantaState } = useGetVidaLlanta();
+
+  const { results: presionTipoEje, state: presionTipoEjeState } =
+    useGetPresionPorTipoEje();
+
+  const { results: analisisProfundidad, state: analisisProfundidadState } =
+    useGetAnalisisProfundidad();
 
   const contentToPrint = useRef(null);
   const handlePrint = useReactToPrint({
@@ -60,21 +76,23 @@ const ReporteFIT = () => {
           <img src={aetoPng} className="logo" alt="Logo-aeto" />
           <h1>Análisis de la inspección de flota (FIT)</h1>
           <h2 className="text-2xl">
-            Para la compañia API,
+            Para la compañia{" "}
+            {portadaInfoState === "loaded" && portadaInfo?.compania},
             <span className="ml-1">
-              {sucursales.map((suc, i) =>
-                i === sucursales.length - 1 ? `${suc}` : `${suc}, `
-              )}
+              {portadaInfoState === "loaded" && portadaInfo?.ubicaciones}
             </span>
           </h2>
           <h2 className="text-xl">
-            {startDate} - {endDate}
+            {portadaInfoState === "loaded" && portadaInfo?.fechas}
           </h2>
-          <img
-            src="LOGO HERE"
-            alt="logo de la compañia API"
-            className="w-[900px] h-[420px] mt-5 mx-auto object-contain"
-          />
+          {portadaInfoState === "loading" && <LoadingIndicator />}
+          {portadaInfoState === "loaded" && portadaInfo?.imagen && (
+            <img
+              src={portadaInfo?.imagen}
+              alt="logo de la compañia API"
+              className="w-[900px] h-[420px] mt-5 mx-auto object-contain"
+            />
+          )}
         </section>
         <section className="page">
           <article>
@@ -205,26 +223,157 @@ const ReporteFIT = () => {
           {resumenObservacionesState === "loading" && <LoadingIndicator />}
           {resumenObservacionesState === "loaded" && (
             <article>
-              {resumenObservaciones.map((ob) => (
-                <table className="w-full">
-                  <thead>
-                    <tr>
-                      <th>Icono</th>
-                      <th>Nombre</th>
-                      <th>Cantidad</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className={`${ob.observaciones__icono} text-6xl text-center` ?? "icon-thumb_down text-6xl text-center"}></td>
+              <table className="w-full">
+                <thead>
+                  <tr>
+                    <th>Icono</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {resumenObservaciones.map((ob) => (
+                    <tr key={ob.observaciones__observacion}>
+                      <td
+                        className={
+                          ob.observaciones__icono
+                            ? `${ob.observaciones__icono} text-5xl text-center`
+                            : "icon-thumb_down text-6xl text-center"
+                        }
+                      ></td>
                       <td>{ob.observaciones__observacion}</td>
                       <td>{ob.cantidad}</td>
                     </tr>
-                  </tbody>
-                </table>
-              ))}
+                  ))}
+                </tbody>
+              </table>
             </article>
           )}
+        </section>
+        <section className="page">
+          <article>
+            <header>
+              <h2 className="text-xl mt-10">Dimensiones de un neumático</h2>
+            </header>
+            {dimensionesLlantaState === "loading" && <LoadingIndicator />}
+            {dimensionesLlantaState === "loaded" && (
+              <Chart
+                chartType="PieChart"
+                options={{ is3D: true }}
+                data={dimensionesLlanta}
+                width="100%"
+                height="500px"
+                legendToggle
+              />
+            )}
+          </article>
+          <article>
+            <header>
+              <h2 className="text-xl mt-10"> Marca de un neumático</h2>
+            </header>
+            {marcasLlantaState === "loading" && <LoadingIndicator />}
+            {marcasLlantaState === "loaded" && (
+              <Chart
+                chartType="PieChart"
+                options={{ is3D: true }}
+                data={marcasLlanta}
+                width="100%"
+                height="500px"
+                legendToggle
+              />
+            )}
+          </article>
+        </section>
+        <section className="page">
+          <article>
+            <header>
+              <h2 className="text-xl mt-10">Vida de neumático</h2>
+            </header>
+            {vidaLLantaState === "loading" && <LoadingIndicator />}
+            {vidaLLantaState === "loaded" && (
+              <Chart
+                chartType="PieChart"
+                options={{ is3D: true }}
+                data={vidaLLanta}
+                width="100%"
+                height="500px"
+                legendToggle
+              />
+            )}
+          </article>
+          <article>
+            <header>
+              <h2 className="text-xl mt-10">Analisis de presión</h2>
+            </header>
+            {analisisPresionState === "loading" && <LoadingIndicator />}
+            {analisisPresionState === "loaded" && (
+              <Chart
+                chartType="PieChart"
+                options={{ is3D: true }}
+                data={analisisPresion}
+                width="100%"
+                height="500px"
+                legendToggle
+              />
+            )}
+          </article>
+        </section>
+        <section className="page">
+          <article>
+            <header>
+              <h2 className="text-xl mt-10">Presión por tipo de eje</h2>
+            </header>
+            {presionTipoEjeState === "loading" && <LoadingIndicator />}
+            {presionTipoEjeState === "loaded" && (
+              <div className="flex flex-wrap">
+                <Chart
+                  chartType="PieChart"
+                  options={{ is3D: true }}
+                  data={presionTipoEje?.dirrecion}
+                  width="450px"
+                  height="400px"
+                  legendToggle
+                />
+                <Chart
+                  chartType="PieChart"
+                  options={{ is3D: true }}
+                  data={presionTipoEje?.traccion}
+                  width="420px"
+                  height="400px"
+                  legendToggle
+                />
+                <Chart
+                  chartType="PieChart"
+                  options={{ is3D: true }}
+                  data={presionTipoEje?.arrastre}
+                  width="420px"
+                  height="400px"
+                  legendToggle
+                />
+              </div>
+            )}
+          </article>
+        </section>
+        <section className="page">
+          <article>
+            <header>
+              <h2 className="text-xl mt-10">Análisis de profundidad</h2>
+            </header>
+            {analisisProfundidadState === "loading" && <LoadingIndicator />}
+            {analisisProfundidadState === "loaded" && (
+              <div className="flex justify-center">
+                <Chart
+                  chartType="Bar"
+                  options={{ is3D: true }}
+                  data={analisisProfundidad}
+                  width="80%"
+                  height="500px"
+                  legendToggle
+                  className="mt-10 ml-[7%] "
+                />
+              </div>
+            )}
+          </article>
         </section>
       </main>
     </>

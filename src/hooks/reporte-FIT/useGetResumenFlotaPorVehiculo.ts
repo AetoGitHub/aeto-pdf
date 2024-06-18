@@ -12,7 +12,7 @@ const useGetResumenFlotaPorVehiculo =  () => {
         `http://127.0.0.1:8000/api/pdf/flota_vehiculo/${window.location.search}`
       );
       setResults(res.data);
-      console.log(res.data, "Resumen flota por Vehiculo")
+      // console.log(res.data, "Resumen flota por Vehiculo")
       setSucursales(Object.keys(res.data))
       setState("loaded")
     } catch (e){

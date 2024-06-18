@@ -12,7 +12,7 @@ const useGetResumenObservaciones =  () => {
         `http://127.0.0.1:8000/api/pdf/resumen_observaciones/${window.location.search}`
       );
       setResults(res.data);
-      console.log(res.data, "Resumen Observaciones")
+      // console.log(res.data, "Resumen Observaciones")
       setState("loaded")
     } catch (e){
       setState("error")

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const useGetMarcasLlanta =  () => {
-  const [results, setResults] = useState();
+  const [results, setResults] = useState<[][]>();
   const [state, setState] = useState<"idle" | "loading" | "loaded" | "error">("idle")
 
   const getMarcasLlanta = async() => {
@@ -11,8 +11,7 @@ const useGetMarcasLlanta =  () => {
       const res = await axios.get(
         `http://127.0.0.1:8000/api/pdf/marca_llanta/${window.location.search}`
       );
-      setResults(res.data);
-      console.log(res.data, "Marca de llantas")
+      setResults( [["Marca", "Cantidad"], ...res.data.map(llanta=> [`${llanta.producto__marca} (${llanta.cantidad})`, llanta.cantidad])]);
       setState("loaded")
     } catch (e){
       setState("error")

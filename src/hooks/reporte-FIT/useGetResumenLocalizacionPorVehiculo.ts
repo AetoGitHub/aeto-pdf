@@ -12,7 +12,7 @@ const useGetResumenLocalizacionPorVehiculo =  () => {
         `http://127.0.0.1:8000/api/pdf/localizacion_vehiculo/${window.location.search}`
       );
       setResults(res.data);
-      console.log(res.data, "Resumen localización por Vehiculo")
+      // console.log(res.data, "Resumen localización por Vehiculo")
       setState("loaded")
     } catch (e){
       setState("error")
