@@ -48,8 +48,10 @@ export interface Llanta {
   numero_economico: string;
   posicion: string;
   presion_actual: number;
+  presion?: number;
   positionString: string
   producto: string;
+  producto_nombre?: string;
   profundidad_central: number | null;
   profundidad_derecha: number | null;
   profundidad_izquierda: number | null;

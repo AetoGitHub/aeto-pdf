@@ -17,40 +17,24 @@ const useGetPresionPorTipoEje = () => {
       const res = await axios.get(
         `http://127.0.0.1:8000/api/pdf/presion_tipo_eje/${window.location.search}`
       );
-
       const chartProps = {
         arrastre: [
           ["Presion", "Cantidad"],
-          [
-            `Buenas (${res.data["Arrastre"].Buenas})`,
-            res.data["Arrastre"].Buenas,
-          ],
+          [`Buenas (${res.data["Arrastre"].Buenas})`,res.data["Arrastre"].Buenas],
           [`Malas (${res.data["Arrastre"].Malas})`, res.data["Arrastre"].Malas],
-          [`Total (${res.data["Arrastre"].Total})`, 0],
+          [`Sin medir (${res.data["Arrastre"].SinMedir})`,  res.data["Arrastre"].SinMedir],
         ],
         dirrecion: [
           ["Presion", "Cantidad"],
-          [
-            `Buenas (${res.data["Dirección"].Buenas})`,
-            res.data["Dirección"].Buenas,
-          ],
-          [
-            `Malas (${res.data["Dirección"].Malas})`,
-            res.data["Dirección"].Malas,
-          ],
-          [
-            `Total (${res.data["Dirección"].Total})`,
-            0,
-          ],
+          [`Buenas (${res.data["Dirección"].Buenas})`,res.data["Dirección"].Buenas],
+          [`Malas (${res.data["Dirección"].Malas})`, res.data["Dirección"].Malas],
+          [`Sin medir (${res.data["Dirección"].SinMedir})`,  res.data["Dirección"].SinMedir],
         ],
         traccion: [
           ["Presion", "Cantidad"],
-          [
-            `Buenas (${res.data["Tracción"].Buenas})`,
-            res.data["Tracción"].Buenas,
-          ],
+          [`Buenas (${res.data["Tracción"].Buenas})`,res.data["Tracción"].Buenas],
           [`Malas (${res.data["Tracción"].Malas})`, res.data["Tracción"].Malas],
-          [`Total (${res.data["Tracción"].Total})`, 0],
+          [`Sin medir (${res.data["Tracción"].SinMedir})`, res.data["Tracción"].SinMedir],
         ],
       };
       setResults(chartProps);

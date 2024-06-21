@@ -17,7 +17,7 @@ const useGetAnalisisPresion = () => {
         ["Estado", "Cantidad"],
         [`Buenas (${res.data["Buenas"]})`, res.data["Buenas"]],
         [`Malas (${res.data["Malas"]})`, res.data["Malas"]],
-        [`Total (${res.data["Total"]})`, 0],
+        [`Sin medir (${res.data["SinMedir"]})`, res.data["SinMedir"]],
       ]);
       setState("loaded");
     } catch (e) {

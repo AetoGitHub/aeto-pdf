@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useGetAnalisisProfundidad =  () => {
-  const [results, setResults] = useState<[][]>();
+const useGetCambiosRecomendados60 =  () => {
+  const [results, setResults] = useState();
   const [state, setState] = useState<"idle" | "loading" | "loaded" | "error">("idle")
 
-  const getAnalisisProfundidad = async() => {
+  const getCambiosRecomendados60 = async() => {
     setState("loading")
     try{
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/pdf/analisis_profundidad/${window.location.search}`
+        `http://127.0.0.1:8000/api/pdf/cambios_recomendados/60/${window.location.search}`
       );
+
       setResults(res.data);
-      setResults( [["Rango de profundidades", "Cantidad"], ...res.data.map(llanta=> [`${llanta.rango} (${llanta.cantidad} llantas)`, llanta.cantidad])]);
 
       setState("loaded")
     } catch (e){
@@ -22,7 +22,7 @@ const useGetAnalisisProfundidad =  () => {
   }
 
     useEffect(() => {
-        getAnalisisProfundidad();
+        getCambiosRecomendados60();
     }, []);
 
     return {
@@ -30,4 +30,4 @@ const useGetAnalisisProfundidad =  () => {
     }
 }
 
-export default useGetAnalisisProfundidad
+export default useGetCambiosRecomendados60

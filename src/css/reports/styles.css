@@ -126,7 +126,7 @@ td {
   text-align: center;
 }
 
-.tire-content__tag {
+.tire__tag {
   background-color: gray;
   border-radius: 0.25rem;
   color: #fff;
@@ -135,15 +135,15 @@ td {
   padding: 0.25rem;
 }
 
-.tire-content__tag.good {
-  background-color: #009345;
+.tire__tag.good {
+  background-color: #009345 !important;
 }
 
-.tire-content__tag.medium {
+.tire__tag.medium {
   background-color: #dbc002;
 }
 
-.tire-content__tag.bad {
+.tire__tag.bad {
   background-color: #f0412c;
 }
 
@@ -152,14 +152,22 @@ td {
   display: flex;
   flex-flow: column nowrap;
 }
+.tire-sp .icon-llanta-outline{
+  transform: rotate(90deg);
+}
+.tire-sp .tire__tag{
+  z-index: 100;
+}
+.tire-sp .tire__tag.pos{
+  font-size: .8rem;
+  border-radius: 40%;
+  margin-top: 5px;
+}
 
 .car-tire .icon-llanta-outline {
   font-size: 6rem;
 }
 
-.tire-sp .car-tire {
-  transform: rotate(90deg);
-}
 
 .tire-sp .car-tire .tire-content {
   justify-content: center;

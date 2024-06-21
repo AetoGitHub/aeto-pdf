@@ -42,7 +42,7 @@ const ReporteTaller = () => {
             <h1 className="report__title">
               Reporte de servicios en taller - {report.numero_economico}
             </h1>
-            <div className="logo">
+            <div className="logo-a">
               <img src={aetoLogo} alt="logo aeto reporte" />
             </div>
           </div>

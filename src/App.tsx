@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <main className="max-w-[1000px] mx-auto">
+        <main className="max-w-[1200px] mx-auto">
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
             <Route path="/reporte-taller/:reportId" element={<ReporteTaller />}></Route>

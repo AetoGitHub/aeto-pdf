@@ -28,7 +28,7 @@ img {
   width: 100%;
 }
 
-.logo {
+.logo-a{
   height: 125px;
   width: 125px;
   /* Galgo */
@@ -162,7 +162,6 @@ img {
 }
 .axle {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
