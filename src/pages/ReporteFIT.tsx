@@ -833,6 +833,44 @@ const ReporteFIT = () => {
                     )}
                   </tbody>
                 </table>
+                <div className="section-header">
+                  <h3>Resumen</h3>
+                </div>
+                <table className="w-full text-center mt-[-1rem]">
+                  <thead>
+                    <tr>
+                      <th>Eje</th>
+                      <th>Dimensión de la Llanta</th>
+                      <th>Cantidad</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cambiosRecomendados?.resumen?.Dirección &&
+                      Object.keys(cambiosRecomendados?.resumen?.Dirección)?.map(
+                        (llanta, i) => (
+                          <tr key={i}>
+                            <th>Dirección</th>
+                            <td>{llanta}</td>
+                            <td>
+                              {cambiosRecomendados?.resumen?.Dirección[llanta]}
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    {cambiosRecomendados?.resumen?.Tracción &&
+                      Object.keys(cambiosRecomendados?.resumen?.Tracción)?.map(
+                        (llanta, i) => (
+                          <tr key={i}>
+                            <th>Tracción</th>
+                            <td>{llanta}</td>
+                            <td>
+                              {cambiosRecomendados?.resumen?.Tracción[llanta]}
+                            </td>
+                          </tr>
+                        )
+                      )}
+                  </tbody>
+                </table>
               </div>
             </article>
           )}
@@ -917,6 +955,44 @@ const ReporteFIT = () => {
                         </tr>
                       )
                     )}
+                  </tbody>
+                </table>
+                <div className="section-header">
+                  <h3>Resumen 30</h3>
+                </div>
+                <table className="w-full text-center mt-[-1rem]">
+                  <thead>
+                    <tr>
+                      <th>Eje</th>
+                      <th>Dimensión de la Llanta</th>
+                      <th>Cantidad</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cambiosRecomendados30?.resumen?.Dirección &&
+                      Object.keys(
+                        cambiosRecomendados30?.resumen?.Dirección
+                      )?.map((llanta, i) => (
+                        <tr key={i}>
+                          <th>Dirección</th>
+                          <td>{llanta}</td>
+                          <td>
+                            {cambiosRecomendados30?.resumen?.Dirección[llanta]}
+                          </td>
+                        </tr>
+                      ))}
+                    {cambiosRecomendados30?.resumen?.Tracción &&
+                      Object.keys(
+                        cambiosRecomendados30?.resumen?.Tracción
+                      )?.map((llanta, i) => (
+                        <tr key={i}>
+                          <th>Tracción</th>
+                          <td>{llanta}</td>
+                          <td>
+                            {cambiosRecomendados30?.resumen?.Tracción[llanta]}
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>
@@ -1036,12 +1112,64 @@ const ReporteFIT = () => {
                           <td>{cambio.vida}</td>
                           <td>
                             {cambio.defectos.length > 0
-                              ? cambio.defectos.map((defecto:string) => `${defecto}, `)
+                              ? cambio.defectos.map(
+                                  (defecto: string) => `${defecto}, `
+                                )
                               : "..."}
                           </td>
                         </tr>
                       )
                     )}
+                  </tbody>
+                </table>
+                <div className="section-header">
+                  <h3>Resumen 60</h3>
+                </div>
+                <table className="w-full text-center mt-[-1rem]">
+                  <thead>
+                    <tr>
+                      <th>Eje</th>
+                      <th>Dimensión de la Llanta</th>
+                      <th>Cantidad</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cambiosRecomendados60?.resumen?.Dirección &&
+                      Object.keys(
+                        cambiosRecomendados60?.resumen?.Dirección
+                      )?.map((llanta, i) => (
+                        <tr key={i}>
+                          <th>Dirección</th>
+                          <td>{llanta}</td>
+                          <td>
+                            {cambiosRecomendados60?.resumen?.Dirección[llanta]}
+                          </td>
+                        </tr>
+                      ))}
+                    {cambiosRecomendados60?.resumen?.Tracción &&
+                      Object.keys(
+                        cambiosRecomendados60?.resumen?.Tracción
+                      )?.map((llanta, i) => (
+                        <tr key={i}>
+                          <th>Tracción</th>
+                          <td>{llanta}</td>
+                          <td>
+                            {cambiosRecomendados60?.resumen?.Tracción[llanta]}
+                          </td>
+                        </tr>
+                      ))}
+                    {cambiosRecomendados60?.resumen?.Arrastre &&
+                      Object.keys(
+                        cambiosRecomendados60?.resumen?.Arrastre
+                      )?.map((llanta, i) => (
+                        <tr key={i}>
+                          <th>Arrastre</th>
+                          <td>{llanta}</td>
+                          <td>
+                            {cambiosRecomendados60?.resumen?.Arrastre[llanta]}
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>
