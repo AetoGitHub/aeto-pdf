@@ -11,7 +11,7 @@ const useGetInspecciones =  () => {
     setState("loading")
     try{
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/pdf/inspecciones_vehiculo/${window.location.search}`
+        `https://www.aetoweb.com/api/pdf/inspecciones_vehiculo/${window.location.search}`
       );
       const inspeccionesWithDiagrams = res.data.map((vehiculo)=> {
         return getVehicleDiagram({

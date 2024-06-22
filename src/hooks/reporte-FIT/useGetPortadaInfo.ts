@@ -11,7 +11,7 @@ const useGetPortadaInfo = () => {
     setState("loading");
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/pdf/portada/${window.location.search}`
+        `https://www.aetoweb.com/api/pdf/portada/${window.location.search}`
       );
       
       setResults(res.data);

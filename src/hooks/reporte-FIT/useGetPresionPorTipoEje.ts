@@ -15,7 +15,7 @@ const useGetPresionPorTipoEje = () => {
     setState("loading");
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/pdf/presion_tipo_eje/${window.location.search}`
+        `https://www.aetoweb.com/api/pdf/presion_tipo_eje/${window.location.search}`
       );
       const chartProps = {
         arrastre: [

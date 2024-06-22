@@ -9,7 +9,7 @@ const useGetVidaLlanta =  () => {
     setState("loading")
     try{
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/pdf/vida_llanta/${window.location.search}`
+        `https://www.aetoweb.com/api/pdf/vida_llanta/${window.location.search}`
       );
       setResults( [["Dimensiones", "Cantidad"], ...res.data.map(llanta=> [`${llanta.vida_upper} (${llanta.cantidad})`, llanta.cantidad])]);
       setState("loaded")

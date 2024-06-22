@@ -9,7 +9,7 @@ const useGetObservaciones =  () => {
     setState("loading")
     try{
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/pdf/observaciones_comunicar/${window.location.search}`
+        `https://www.aetoweb.com/api/pdf/observaciones_comunicar/${window.location.search}`
       );
       setResults(res.data.results);
       setState("loaded")

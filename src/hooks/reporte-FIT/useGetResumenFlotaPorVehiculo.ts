@@ -9,7 +9,7 @@ const useGetResumenFlotaPorVehiculo =  () => {
     setState("loading")
     try{
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/pdf/flota_vehiculo/${window.location.search}`
+        `https://www.aetoweb.com/api/pdf/flota_vehiculo/${window.location.search}`
       );
       setResults(res.data);
       // console.log(res.data, "Resumen flota por Vehiculo")

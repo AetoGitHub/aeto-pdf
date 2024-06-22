@@ -8,7 +8,7 @@ const useGetWorkshopReport =  (id: string | undefined) => {
 
   const getWorkshopReport = async() => {
     const res = await axios.get(
-        `http://127.0.0.1:8000/api/servicio/retrieve/vehicle/report/${id}/`
+        `https://www.aetoweb.com/api/servicio/retrieve/vehicle/report/${id}/`
       );
       const diagram = getVehicleDiagram(res.data)
       setReport(diagram);

@@ -9,7 +9,7 @@ const useGetCambiosRecomendados60 =  () => {
     setState("loading")
     try{
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/pdf/cambios_recomendados/60/${window.location.search}`
+        `https://www.aetoweb.com/api/pdf/cambios_recomendados/60/${window.location.search}`
       );
 
       setResults(res.data);

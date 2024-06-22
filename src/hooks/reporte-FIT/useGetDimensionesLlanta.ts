@@ -9,7 +9,7 @@ const useGetDimensionesLlanta =  () => {
     setState("loading")
     try{
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/pdf/dimensiones_llanta/${window.location.search}`
+        `https://www.aetoweb.com/api/pdf/dimensiones_llanta/${window.location.search}`
       );
       setResults( [["Dimensiones", "Cantidad"], ...res.data.map(llanta=> [`${llanta.producto__dimension} (${llanta.cantidad})`, llanta.cantidad])]);
       setState("loaded")

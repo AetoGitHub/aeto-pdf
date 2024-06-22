@@ -11,7 +11,7 @@ const useGetAnalisisPresion = () => {
     setState("loading");
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/pdf/analisis_presion/${window.location.search}`
+        `https://www.aetoweb.com/api/pdf/analisis_presion/${window.location.search}`
       );
       setResults([
         ["Estado", "Cantidad"],
