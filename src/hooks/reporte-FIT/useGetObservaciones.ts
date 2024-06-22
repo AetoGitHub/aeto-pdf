@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const useGetObservaciones =  () => {
-  const [results, setResults] = useState();
+  const [results, setResults] = useState<any[]>([]);
   const [state, setState] = useState<"idle" | "loading" | "loaded" | "error">("idle")
 
   const getObservaciones = async() => {

@@ -3,7 +3,7 @@ import axios from "axios";
 import { getVehicleDiagram } from "../../utils/getVehicleDiagram";
 
 const useGetInspecciones =  () => {
-  const [results, setResults] = useState();
+  const [results, setResults] = useState<any[]>([]);
 
   const [state, setState] = useState<"idle" | "loading" | "loaded" | "error">("idle")
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const useGetResumenLocalizacionPorVehiculo =  () => {
-  const [results, setResults] = useState();
+  const [results, setResults] = useState<Record<string, any>>({});
   const [state, setState] = useState<"idle" | "loading" | "loaded" | "error">("idle")
 
   const getResumenLocalizacionPorVehiculo = async() => {

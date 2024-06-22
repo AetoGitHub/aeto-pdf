@@ -4,7 +4,7 @@ import { WorkshopReport } from "../../models/Workshop";
 import { getVehicleDiagram } from "../../utils/getVehicleDiagram";
 
 const useGetWorkshopReport =  (id: string | undefined) => {
-  const [report, setReport] = useState<WorkshopReport>({});
+  const [report, setReport] = useState<WorkshopReport>({} as any);
 
   const getWorkshopReport = async() => {
     const res = await axios.get(

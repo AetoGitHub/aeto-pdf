@@ -164,7 +164,7 @@ const ReporteFIT = () => {
             Análisis de la inspección de flota (FIT)
           </h1>
           <h2 className="text-2xl text-center">
-            Para la compañia{" "}
+            Para la compañía{" "}
             {portadaInfoState === "loaded" && portadaInfo?.compania},
             <span className="ml-1 text-center">
               {portadaInfoState === "loaded" && portadaInfo?.ubicaciones}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const useGetNecesidadesInmediatas =  () => {
-  const [results, setResults] = useState();
+  const [results, setResults] = useState<Record<string, any>>({});
   const [localidades, setLocalidades] = useState<string[]>([]);
 
   const [state, setState] = useState<"idle" | "loading" | "loaded" | "error">("idle")
