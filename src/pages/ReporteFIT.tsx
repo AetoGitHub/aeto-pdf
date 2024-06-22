@@ -773,7 +773,7 @@ const ReporteFIT = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {cambiosRecomendados?.recomendaciones?.Dirección.map(
+                    {cambiosRecomendados?.recomendaciones?.Dirección?.map(
                       (cambio) => (
                         <tr key={cambio.economico_de_la_llanta}>
                           <td>{cambio.matricula}</td>
@@ -812,7 +812,7 @@ const ReporteFIT = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {cambiosRecomendados?.recomendaciones?.Tracción.map(
+                    {cambiosRecomendados?.recomendaciones?.Tracción?.map(
                       (cambio) => (
                         <tr key={cambio.economico_de_la_llanta}>
                           <td>{cambio.matricula}</td>
