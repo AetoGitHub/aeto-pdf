@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://www.aetoweb.com';
+
 const useGetAnalisisPresion = () => {
   const [results, setResults] = useState<[string, unknown][]>();
   const [state, setState] = useState<"idle" | "loading" | "loaded" | "error">(
@@ -11,7 +13,7 @@ const useGetAnalisisPresion = () => {
     setState("loading");
     try {
       const res = await axios.get(
-        `https://www.aetoweb.com/api/pdf/analisis_presion/${window.location.search}`
+        `${API_BASE_URL}/api/pdf/analisis_presion/${window.location.search}`
       );
       setResults([
         ["Estado", "Cantidad"],

@@ -3,12 +3,14 @@ import axios from "axios";
 import { WorkshopReport } from "../../models/Workshop";
 import { getVehicleDiagram } from "../../utils/getVehicleDiagram";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://www.aetoweb.com';
+
 const useGetWorkshopReport =  (id: string | undefined) => {
   const [report, setReport] = useState<WorkshopReport>({} as any);
 
   const getWorkshopReport = async() => {
     const res = await axios.get(
-        `https://www.aetoweb.com/api/servicio/retrieve/vehicle/report/${id}/`
+        `${API_BASE_URL}/api/servicio/retrieve/vehicle/report/${id}/`
       );
       const diagram = getVehicleDiagram(res.data)
       setReport(diagram);

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { getVehicleDiagram } from "../../utils/getVehicleDiagram";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://www.aetoweb.com';
+
 const useGetInspecciones =  () => {
   const [results, setResults] = useState<any[]>([]);
 
@@ -11,7 +13,7 @@ const useGetInspecciones =  () => {
     setState("loading")
     try{
       const res = await axios.get(
-        `https://www.aetoweb.com/api/pdf/inspecciones_vehiculo/${window.location.search}`
+        `${API_BASE_URL}/api/pdf/inspecciones_vehiculo/${window.location.search}`
       );
       const inspeccionesWithDiagrams = res.data.map((vehiculo)=> {
         return getVehicleDiagram({

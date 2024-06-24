@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://www.aetoweb.com';
+
 const useGetVidaLlanta =  () => {
   const [results, setResults] = useState<[][]>();
   const [state, setState] = useState<"idle" | "loading" | "loaded" | "error">("idle")
@@ -9,7 +11,7 @@ const useGetVidaLlanta =  () => {
     setState("loading")
     try{
       const res = await axios.get(
-        `https://www.aetoweb.com/api/pdf/vida_llanta/${window.location.search}`
+        `${API_BASE_URL}/api/pdf/vida_llanta/${window.location.search}`
       );
       setResults( [["Dimensiones", "Cantidad"], ...res.data.map(llanta=> [`${llanta.vida_upper} (${llanta.cantidad})`, llanta.cantidad])]);
       setState("loaded")

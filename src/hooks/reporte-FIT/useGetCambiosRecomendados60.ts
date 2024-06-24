@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://www.aetoweb.com';
+
 const useGetCambiosRecomendados60 =  () => {
   const [results, setResults] = useState<Record<string, any>>({});
   const [state, setState] = useState<"idle" | "loading" | "loaded" | "error">("idle")
@@ -9,7 +11,7 @@ const useGetCambiosRecomendados60 =  () => {
     setState("loading")
     try{
       const res = await axios.get(
-        `https://www.aetoweb.com/api/pdf/cambios_recomendados/60/${window.location.search}`
+        `${API_BASE_URL}/api/pdf/cambios_recomendados/60/${window.location.search}`
       );
 
       setResults(res.data);
