@@ -1187,6 +1187,8 @@ const ReporteFIT = () => {
                 <table className="w-full">
                   <thead>
                     <tr>
+                      <th>Matrícula del vehículo</th>
+                      <th>Posición de la llanta</th>
                       <th>Producto</th>
                       <th>Observaciones</th>
                       <th>Acciones</th>
@@ -1195,6 +1197,10 @@ const ReporteFIT = () => {
                   <tbody>
                     {observaciones?.map((ob) => (
                       <tr key={ob.id}>
+                        <td>{ob.matricula}</td>
+
+                        <td>{ob.posicion}</td>
+
                         <td>{ob.producto_nombre}</td>
                         <td>
                           {ob.observaciones.map(

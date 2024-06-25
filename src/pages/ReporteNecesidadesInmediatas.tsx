@@ -113,7 +113,7 @@ const ReporteFIT = () => {
                                     key={`${loc}-${vehiculo}-${necesidad.numero_economico}-${necesidad.fecha_inspeccion}-${i}`}
                                   >
                                     <td>{necesidad.numero_economico}</td>
-                                    <td>{necesidad.punto_venta}</td>
+                                    <td>{necesidad.posicion}</td>
                                     <td>{necesidad.dimension}</td>
                                     <td>{necesidad.observaciones}</td>
                                     <td
