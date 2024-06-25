@@ -92,7 +92,7 @@ const ReporteFIT = () => {
                       <thead>
                         <tr>
                           <th>Vehículo</th>
-                          <th>Punto de venta</th>
+                          <th>Posición</th>
                           <th>Dimensión</th>
                           <th>Observaciones</th>
                           <th>Acciones</th>
