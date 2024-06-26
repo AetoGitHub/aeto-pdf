@@ -9,14 +9,14 @@ const DoubleTireAxle = ({eje} : {eje:Llanta[]}) => {
             {eje[0]?.numero_economico} | {eje[0]?.producto_nombre ?? eje[0]?.producto} 
           </div>
           <div className={eje[0]?.tipo_de_eje === "SP2" ? "tire tire-sp" : "tire car-tire"}>
-            <div className={`tire__tag pos ${eje[0]?.color_top}`}>
+            <div className={`tire__tag pos ${eje[0]?.color_middle}`}>
               {eje[0]?.positionString}
             </div>
-            <div className={`tire__tag up ${eje[0]?.color_middle}`}>
+            <div className={`tire__tag up ${eje[0]?.color_top}`}>
               {eje[0]?.presion ?? eje[0]?.presion_actual}
             </div>
             <span className="icon-llanta-outline"></span>
-            <div className={`tire__tag good down ${eje[0]?.color_buttom}`}>
+            <div className={`tire__tag down ${eje[0]?.color_buttom}`}>
               {eje[0]?.profundidad_central ?? 1}
             </div>
           </div>
@@ -26,7 +26,7 @@ const DoubleTireAxle = ({eje} : {eje:Llanta[]}) => {
           className="axle"
           style={{ display: eje[0]?.tipo_de_eje === "SP2" ? "none" : "" }}
         >
-          <span>{eje[0]?.presion_actual}</span>
+          <span>{eje[0]?.dimension}</span>
           <div className="shaft"></div>
           {/* <span>{eje[0]?.producto}</span> */}
         </div>
@@ -36,15 +36,15 @@ const DoubleTireAxle = ({eje} : {eje:Llanta[]}) => {
             {eje[1]?.numero_economico} | {eje[0]?.producto_nombre ?? eje[0]?.producto} 
           </div>
           <div className={eje[1]?.tipo_de_eje === "SP2" ? "tire tire-sp" : "tire car-tire"}>
-            <div className={`tire__tag pos ${eje[1]?.color_top}`}>
+            <div className={`tire__tag pos ${eje[1]?.color_middle}`}>
               {eje[1]?.positionString}
             </div>
-            <div className={`tire__tag up ${eje[1]?.color_middle}`}>
+            <div className={`tire__tag up ${eje[1]?.color_top}`}>
             {eje[1]?.presion ?? eje[1]?.presion_actual}
 
             </div>
             <span className="icon-llanta-outline"></span>
-            <div className={`tire__tag good down ${eje[1]?.color_buttom}`}>
+            <div className={`tire__tag down ${eje[1]?.color_buttom}`}>
               {eje[1]?.profundidad_central ?? 1}
             </div>
           </div>

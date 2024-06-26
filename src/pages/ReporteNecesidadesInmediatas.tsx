@@ -29,8 +29,8 @@ const ReporteFIT = () => {
         <button
           className={`rounded-2xl p-3 my-4 text-xl transition-colors duration-300 ${
             state === "loaded"
-              ? "bg-black text-white hover:bg-gray-800 cursor-pointer"
-              : "bg-gray-500 text-black cursor-not-allowed opacity-50"
+              ? "bg-black text-white hover:bg-gray-800 cursor-pointer fixed top-0 z-50"
+              : "bg-gray-500 text-black cursor-not-allowed opacity-50 fixed top-0 z-50"
           }`}
           disabled={state !== "loaded"}
           onClick={() => {

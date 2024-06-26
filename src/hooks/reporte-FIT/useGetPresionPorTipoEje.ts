@@ -22,21 +22,21 @@ const useGetPresionPorTipoEje = () => {
       const chartProps = {
         arrastre: [
           ["Presion", "Cantidad"],
-          [`Buenas (${res.data["Arrastre"].Buenas})`,res.data["Arrastre"].Buenas],
-          [`Malas (${res.data["Arrastre"].Malas})`, res.data["Arrastre"].Malas],
-          [`Sin medir (${res.data["Arrastre"].SinMedir})`,  res.data["Arrastre"].SinMedir],
+          [`Buenas (${res.data["Arrastre"]?.Buenas})`,res.data["Arrastre"]?.Buenas],
+          [`Malas (${res.data["Arrastre"]?.Malas})`, res.data["Arrastre"]?.Malas],
+          [`Sin medir (${res.data["Arrastre"]?.SinMedir})`,  res.data["Arrastre"]?.SinMedir],
         ],
         dirrecion: [
           ["Presion", "Cantidad"],
-          [`Buenas (${res.data["Dirección"].Buenas})`,res.data["Dirección"].Buenas],
-          [`Malas (${res.data["Dirección"].Malas})`, res.data["Dirección"].Malas],
-          [`Sin medir (${res.data["Dirección"].SinMedir})`,  res.data["Dirección"].SinMedir],
+          [`Buenas (${res.data["Dirección"]?.Buenas})`,res.data["Dirección"]?.Buenas],
+          [`Malas (${res.data["Dirección"]?.Malas})`, res.data["Dirección"]?.Malas],
+          [`Sin medir (${res.data["Dirección"]?.SinMedir})`,  res.data["Dirección"]?.SinMedir],
         ],
         traccion: [
           ["Presion", "Cantidad"],
-          [`Buenas (${res.data["Tracción"].Buenas})`,res.data["Tracción"].Buenas],
-          [`Malas (${res.data["Tracción"].Malas})`, res.data["Tracción"].Malas],
-          [`Sin medir (${res.data["Tracción"].SinMedir})`, res.data["Tracción"].SinMedir],
+          [`Buenas (${res.data["Tracción"]?.Buenas})`,res.data["Tracción"]?.Buenas],
+          [`Malas (${res.data["Tracción"]?.Malas})`, res.data["Tracción"]?.Malas],
+          [`Sin medir (${res.data["Tracción"]?.SinMedir})`, res.data["Tracción"]?.SinMedir],
         ],
       };
       setResults(chartProps);

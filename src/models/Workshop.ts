@@ -56,6 +56,7 @@ export interface Llanta {
   profundidad_derecha: number | null;
   profundidad_izquierda: number | null;
   tipo_de_eje: string;
+  dimension?:string;
 }
 export interface Tire extends Llanta {
   position: {
