@@ -556,11 +556,11 @@ const ReporteFIT = () => {
                         <div className="car detail gap-[4rem] flex flex-col ">
                           {inspeccionWrapper.tires?.map((eje, i) => {
                             if (eje.length === 1)
-                              return <SingleTireAxle eje={eje} key={i} />;
+                              return <SingleTireAxle eje={eje} key={i}/>;
                             if (eje.length === 2)
-                              return <DoubleTireAxle eje={eje} key={i} />;
+                              return <DoubleTireAxle eje={eje} key={i} fit={true} presionAxle={inspeccionWrapper.presiones_establecidas[0]}/>;
                             if (eje.length === 4)
-                              return <QuadTireAxle eje={eje} key={i} />;
+                              return <QuadTireAxle eje={eje} key={i} fit={true} presionAxle={inspeccionWrapper.presiones_establecidas[0]}/>;
                           })}
                         </div>
                       </div>
