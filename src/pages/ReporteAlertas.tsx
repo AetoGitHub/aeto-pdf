@@ -144,7 +144,7 @@ const ReporteFIT = () => {
                             <thead>
                               <tr className="bg-white text-black">
                                 <th>Pos</th>
-                                <th>Icono</th>
+                                {/* <th>Icono</th> */}
                                 <th>Defecto</th>
                                 <th>Acción</th>
                                 <th></th>
@@ -156,7 +156,7 @@ const ReporteFIT = () => {
                                   return llanta.observaciones?.map((ob) => (
                                     <tr key={ob.id}>
                                       <td>{llanta.posicion}</td>
-                                      <td>{ob.icono ?? "---"}</td>
+                                      {/* <td>{ob.icono ?? "---"}</td> */}
                                       <td>{ob.observacion ?? "---"}</td>
                                       <td>{ob.acciones ?? "---"}</td>
                                       <td>
