@@ -2,7 +2,7 @@ import "../css/base.css";
 import "../css/normalize.css";
 import "../css/icomoon/style.css";
 import "../css/reports/styles.css";
-import "../css/reports/alertas.css"
+import "../css/reports/alertas.css";
 
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
@@ -125,7 +125,11 @@ const ReporteFIT = () => {
                                     eje={eje}
                                     key={i}
                                     fit={true}
-                                    presionAxle={inspeccion?.presion_establecida ?? null}
+                                    presionAxle={
+                                      inspeccion?.presiones_establecidas
+                                        ? inspeccion?.presiones_establecidas[0]
+                                        : null
+                                    }
                                   />
                                 );
                               if (eje.length === 4)
@@ -134,7 +138,11 @@ const ReporteFIT = () => {
                                     eje={eje}
                                     key={i}
                                     fit={true}
-                                    presionAxle={inspeccion?.presion_establecida ?? null}
+                                    presionAxle={
+                                      inspeccion?.presiones_establecidas
+                                        ? inspeccion?.presiones_establecidas[0]
+                                        : null
+                                    }
                                   />
                                 );
                             })}
