@@ -3,10 +3,21 @@
 }
 
 .tire__economic-bottom, .tire__economic-top{
-    max-width: 145px;
+    width: 250px;
 }
 
 td, th, tr {
     padding: 0;
     max-height: 20px;
+}
+
+.ejes__4{
+    margin-bottom: 2rem;
+}
+
+.tire-sp .down{
+    bottom: -.6rem;
+}
+.tire-sp .icon-llanta-outline {
+    margin-top: .6rem;
 }
