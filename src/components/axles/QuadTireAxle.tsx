@@ -53,7 +53,7 @@ const QuadTireAxle  = ({ eje, fit, presionAxle }: { eje: Llanta[], fit?:boolean,
         <div className="axle">
           <span className="mb-[1rem] ">{eje[0]?.dimension}</span>
           <div className="shaft"><p className="mt-[-8px] z-20 bg-white rounded-full h-[22px] w-[30px] text-center border-[1px] border-black">{eje[0].tipo_de_eje}</p></div>
-          <span  className="mt-[1rem] ">{presionAxle} PSI</span>
+          <span  className="mt-[1rem] ">{presionAxle ? `${presionAxle} PSI` : ``}</span>
         </div>
 
         <div className="double-tire">
