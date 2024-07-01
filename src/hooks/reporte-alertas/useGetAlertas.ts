@@ -19,6 +19,7 @@ const useGetAlertas = () => {
         `${API_BASE_URL}/api/pdf/informe_alerta/${window.location.search}`
       );
       setLocalidades(Object.keys(res.data));
+      console.log(res.data)
       const newData = {}
       Object.keys(res.data)?.map(
         (loc) =>
