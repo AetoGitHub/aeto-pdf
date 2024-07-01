@@ -125,6 +125,7 @@ const ReporteFIT = () => {
                                     eje={eje}
                                     key={i}
                                     fit={true}
+                                    presionAxle={inspeccion?.presion_establecida ?? null}
                                   />
                                 );
                               if (eje.length === 4)
@@ -133,6 +134,7 @@ const ReporteFIT = () => {
                                     eje={eje}
                                     key={i}
                                     fit={true}
+                                    presionAxle={inspeccion?.presion_establecida ?? null}
                                   />
                                 );
                             })}
