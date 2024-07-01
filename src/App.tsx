@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ReporteTaller from "./pages/ReporteTaller";
 import ReporteFIT from "./pages/ReporteFIT";
+import ReporteAlertas from "./pages/ReporteAlertas";
 import ReporteNecesidadesInmediatas from "./pages/ReporteNecesidadesInmediatas";
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
             <Route path="/reporte-taller/:reportId" element={<ReporteTaller />}></Route>
             <Route path="/reporte-fit/" element={<ReporteFIT />}></Route>
             <Route path="/reporte-necesidades-inmediatas/" element={<ReporteNecesidadesInmediatas />}></Route>
-
-
+            <Route path="/reporte-alertas/" element={<ReporteAlertas />}></Route>
+            
             <Route
               path="*"
               element={

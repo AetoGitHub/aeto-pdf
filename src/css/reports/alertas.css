@@ -1,0 +1,12 @@
+.icon-llanta-outline:before{
+    font-size: 5rem;
+}
+
+.tire__economic-bottom, .tire__economic-top{
+    max-width: 145px;
+}
+
+td, th, tr {
+    padding: 0;
+    max-height: 20px;
+}
