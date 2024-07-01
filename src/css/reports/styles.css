@@ -491,3 +491,10 @@ td span[class^='icon'] {
   left: 0;
   text-align: left;
 }
+
+.tire-sp .down{
+  bottom: -.6rem;
+}
+.tire-sp .icon-llanta-outline {
+  margin-top: .6rem;
+}
