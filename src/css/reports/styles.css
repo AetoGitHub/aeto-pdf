@@ -498,3 +498,7 @@ td span[class^='icon'] {
 .tire-sp .icon-llanta-outline {
   margin-top: .6rem;
 }
+
+.tire-sp .tire__economic-top {
+  margin-left: -3rem;
+}

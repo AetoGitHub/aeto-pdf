@@ -85,7 +85,7 @@ const ReporteFIT = () => {
               localidades.map((loc) => (
                 <div key={loc} className="mb-4">
                   <div className="text-xl">
-                    <h4>{loc}</h4>
+                    <h4>{Object.keys(results[loc]).length == 0 ? `${loc}: Sin información... ` : loc}</h4>
                   </div>
                   {Object.keys(results[loc]).length > 0 && (
                     <table className="w-full">
