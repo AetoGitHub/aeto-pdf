@@ -618,7 +618,7 @@ const ReporteFIT = () => {
                 chartType="PieChart"
                 options={{ is3D: true }}
                 data={dimensionesLlanta}
-                width="100%"
+                width="500px"
                 height="500px"
                 legendToggle
               />
@@ -637,7 +637,7 @@ const ReporteFIT = () => {
                 chartType="PieChart"
                 options={{ is3D: true }}
                 data={marcasLlanta}
-                width="100%"
+                width="500px"
                 height="500px"
                 legendToggle
               />
@@ -657,7 +657,7 @@ const ReporteFIT = () => {
                 chartType="PieChart"
                 options={{ is3D: true }}
                 data={vidaLLanta}
-                width="100%"
+                width="500px"
                 height="500px"
                 legendToggle
               />
@@ -675,7 +675,7 @@ const ReporteFIT = () => {
                 chartType="PieChart"
                 options={{ is3D: true }}
                 data={analisisPresion}
-                width="100%"
+                width="500px"
                 height="500px"
                 legendToggle
               />
@@ -734,7 +734,7 @@ const ReporteFIT = () => {
                   chartType="Bar"
                   options={{ is3D: true }}
                   data={analisisProfundidad}
-                  width="80%"
+                  width="600px"
                   height="500px"
                   legendToggle
                   className="mt-10 ml-[7%]"

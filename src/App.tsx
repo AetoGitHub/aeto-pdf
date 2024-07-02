@@ -4,6 +4,7 @@ import ReporteTaller from "./pages/ReporteTaller";
 import ReporteFIT from "./pages/ReporteFIT";
 import ReporteAlertas from "./pages/ReporteAlertas";
 import ReporteNecesidadesInmediatas from "./pages/ReporteNecesidadesInmediatas";
+import ReporteTyreMonitoring from "./pages/ReporteTyreMonitoring"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/reporte-fit/" element={<ReporteFIT />}></Route>
             <Route path="/reporte-necesidades-inmediatas/" element={<ReporteNecesidadesInmediatas />}></Route>
             <Route path="/reporte-alertas/" element={<ReporteAlertas />}></Route>
+            <Route path="/reporte-tyre-monitoring/" element={<ReporteTyreMonitoring />}></Route>
             
             <Route
               path="*"
