@@ -101,7 +101,7 @@ const ReporteFIT = () => {
       observacionesState,
     ];
 
-    return apiStates.every((state) => state === "loaded");
+    return apiStates.every((state) => state !== "loading");
   }, [
     portadaInfoState,
     resumenFlotaPorVehiculoState,
