@@ -485,3 +485,7 @@ img {
 .not-aligned-right{
   transform: rotate(-0.02turn);
 }
+
+.icon-llanta-outline:before {
+  font-size: 8rem !important
+}
