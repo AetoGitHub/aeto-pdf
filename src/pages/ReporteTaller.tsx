@@ -269,8 +269,7 @@ const ReporteTaller = () => {
                           <td className="td-table">
                             La llanta de número económico:{" "}
                             {llanta.numero_economico} se rotó con la llanta:{" "}
-                            {llanta.rotar_numero_economico} de la posición:{" "}
-                            {llanta.rotar_posicion}
+                            {llanta.rotar_numero_economico}
                           </td>
                         </tr>
                       )}
