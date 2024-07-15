@@ -4,7 +4,7 @@ import ReporteTaller from "./pages/ReporteTaller";
 import ReporteFIT from "./pages/ReporteFIT";
 import ReporteAlertas from "./pages/ReporteAlertas";
 import ReporteNecesidadesInmediatas from "./pages/ReporteNecesidadesInmediatas";
-import ReporteTyreMonitoring from "./pages/ReporteTyreMonitoring"
+// import ReporteTyreMonitoring from "./pages/ReporteTyreMonitoring"
 
 function App() {
   return (
