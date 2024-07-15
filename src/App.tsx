@@ -17,7 +17,6 @@ function App() {
             <Route path="/reporte-fit/" element={<ReporteFIT />}></Route>
             <Route path="/reporte-necesidades-inmediatas/" element={<ReporteNecesidadesInmediatas />}></Route>
             <Route path="/reporte-alertas/" element={<ReporteAlertas />}></Route>
-            <Route path="/reporte-tyre-monitoring/" element={<ReporteTyreMonitoring />}></Route>
             
             <Route
               path="*"
