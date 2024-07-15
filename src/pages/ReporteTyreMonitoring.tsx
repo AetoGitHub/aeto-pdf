@@ -122,7 +122,6 @@ const ReporteTyreMonitoring = () => {
                             <th>Km montado</th>
                             <th>Km actuales</th>
                             <th>Km recorrido</th>
-                            <th>Km previsto</th>
                             <th>% desgaste ITD</th>
                           </tr>
                         </thead>
@@ -138,7 +137,6 @@ const ReporteTyreMonitoring = () => {
                               <td>{llanta.km_montado ?? "---"}</td>
                               <td>{llanta.km_actual ?? "---"}</td>
                               <td>{llanta.km_recorrido ?? "---"}</td>
-                              <td>{llanta.km_previsto ?? "---"}</td>
                               <td>{llanta.porcentaje_desgaste ?? "---"}</td>
                             </tr>
                           ))}
