@@ -132,4 +132,8 @@ export interface ServiceTire {
   taller_desmontaje: number | null;
   tipo_de_eje: string;
   valvula_reparada: boolean;
+  presion_salida?: number;
+  presion_entrada?: number;
+
+  min_presion?: number
 }
