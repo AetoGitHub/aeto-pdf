@@ -29,7 +29,7 @@ const SingleTireAxle = ({
               ?.presion_salida === undefined
               ? '---'
               : servicesTires.find((tire) => tire.llanta_original === eje[0].id)
-                  ?.presion_salida}
+                  ?.presion_salida ?? "---"}
           </div>
           <span className="icon-llanta-outline "></span>
           <div className={`tire__tag down ${eje[0]?.color_buttom}`}>

@@ -38,7 +38,7 @@ const DoubleTireAxle = ({
                 ? '---'
                 : servicesTires?.find(
                     (tire) => tire.llanta_original === eje[0].id
-                  )?.presion_salida}
+                  )?.presion_salida ?? "---"}
             </div>
             <span className="icon-llanta-outline"></span>
             <div className={`tire__tag down ${eje[0]?.color_buttom}`}>
@@ -86,7 +86,7 @@ const DoubleTireAxle = ({
                 ? '---'
                 : servicesTires?.find(
                     (tire) => tire.llanta_original === eje[1].id
-                  )?.presion_salida}
+                  )?.presion_salida ?? "---"}
             </div>
             <span className="icon-llanta-outline"></span>
             <div className={`tire__tag down ${eje[1]?.color_buttom}`}>
