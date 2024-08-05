@@ -25,6 +25,7 @@ const useGetInspecciones =  () => {
         })
       })
       setResults(inspeccionesWithDiagrams);
+      console.log(inspeccionesWithDiagrams)
       setState("loaded")
     } catch (e){
       setState("error")
