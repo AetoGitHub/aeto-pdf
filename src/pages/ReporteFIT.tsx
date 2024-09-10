@@ -1,39 +1,39 @@
-import "../css/base.css";
-import "../css/normalize.css";
-import "../css/icomoon/style.css";
-import "../css/reports/styles.css";
-import aetoPng from "../assets/aeto_vectorized.png";
+import '../css/base.css';
+import '../css/normalize.css';
+import '../css/icomoon/style.css';
+import '../css/reports/styles.css';
+import aetoPng from '../assets/aeto_vectorized.png';
 
-import { useRef, useEffect, useCallback, useState } from "react";
-import { useReactToPrint } from "react-to-print";
-import LoadingIndicator from "../components/LoadingIndicator";
-import { useSearchParams } from "react-router-dom";
-import { Chart } from "react-google-charts";
-import { formatDate } from "../utils/formatDate";
-import SingleTireAxle from "../components/axles/SingleTireAxle";
-import DoubleTireAxle from "../components/axles/DoubleTireAxle";
-import QuadTireAxle from "../components/axles/QuadTireAxle";
+import { useRef, useEffect, useCallback, useState } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import LoadingIndicator from '../components/LoadingIndicator';
+import { useSearchParams } from 'react-router-dom';
+import { Chart } from 'react-google-charts';
+import { formatDate } from '../utils/formatDate';
+import SingleTireAxle from '../components/axles/SingleTireAxle';
+import DoubleTireAxle from '../components/axles/DoubleTireAxle';
+import QuadTireAxle from '../components/axles/QuadTireAxle';
 
 /* hooks */
-import useGetPortadaInfo from "../hooks/reporte-FIT/useGetPortadaInfo";
-import useGetResumenFlotaPorVehiculo from "../hooks/reporte-FIT/useGetResumenFlotaPorVehiculo";
-import useGetResumenLocalizacionPorVehiculo from "../hooks/reporte-FIT/useGetResumenLocalizacionPorVehiculo";
-import useGetInspecciones from "../hooks/reporte-FIT/useGetInspecciones";
-import useGetResumenObservaciones from "../hooks/reporte-FIT/useGetResumenObservaciones";
-import useGetDimensionesLlanta from "../hooks/reporte-FIT/useGetDimensionesLlanta";
-import useGetMarcasLlanta from "../hooks/reporte-FIT/useGetMarcasLlanta";
-import useGetVidaLlanta from "../hooks/reporte-FIT/useGetVidaLlanta";
-import useGetAnalisisPresion from "../hooks/reporte-FIT/useGetAnalisisPresion";
-import useGetPresionPorTipoEje from "../hooks/reporte-FIT/useGetPresionPorTipoEje";
-import useGetAnalisisProfundidad from "../hooks/reporte-FIT/useGetAnalisisProfundidad";
-import useGetCambiosRecomendados from "../hooks/reporte-FIT/useGetCambiosRecomendados";
-import useGetCambiosRecomendados30 from "../hooks/reporte-FIT/useGetCambiosRecomendados30";
-import useGetCambiosRecomendados60 from "../hooks/reporte-FIT/useGetCambiosRecomendados60";
-import useGetObservaciones from "../hooks/reporte-FIT/useGetObservaciones";
+import useGetPortadaInfo from '../hooks/reporte-FIT/useGetPortadaInfo';
+import useGetResumenFlotaPorVehiculo from '../hooks/reporte-FIT/useGetResumenFlotaPorVehiculo';
+import useGetResumenLocalizacionPorVehiculo from '../hooks/reporte-FIT/useGetResumenLocalizacionPorVehiculo';
+import useGetInspecciones from '../hooks/reporte-FIT/useGetInspecciones';
+import useGetResumenObservaciones from '../hooks/reporte-FIT/useGetResumenObservaciones';
+import useGetDimensionesLlanta from '../hooks/reporte-FIT/useGetDimensionesLlanta';
+import useGetMarcasLlanta from '../hooks/reporte-FIT/useGetMarcasLlanta';
+import useGetVidaLlanta from '../hooks/reporte-FIT/useGetVidaLlanta';
+import useGetAnalisisPresion from '../hooks/reporte-FIT/useGetAnalisisPresion';
+import useGetPresionPorTipoEje from '../hooks/reporte-FIT/useGetPresionPorTipoEje';
+import useGetAnalisisProfundidad from '../hooks/reporte-FIT/useGetAnalisisProfundidad';
+import useGetCambiosRecomendados from '../hooks/reporte-FIT/useGetCambiosRecomendados';
+import useGetCambiosRecomendados30 from '../hooks/reporte-FIT/useGetCambiosRecomendados30';
+import useGetCambiosRecomendados60 from '../hooks/reporte-FIT/useGetCambiosRecomendados60';
+import useGetObservaciones from '../hooks/reporte-FIT/useGetObservaciones';
 
 const ReporteFIT = () => {
   const [searchParams] = useSearchParams();
-  const perdidaMensual = searchParams.get("perdida_mensual");
+  const perdidaMensual = searchParams.get('perdida_mensual');
   const [allApisLoaded, setAllApisLoaded] = useState(false);
 
   const { results: portadaInfo, state: portadaInfoState } = useGetPortadaInfo();
@@ -101,7 +101,7 @@ const ReporteFIT = () => {
       observacionesState,
     ];
 
-    return apiStates.every((state) => state !== "loading");
+    return apiStates.every((state) => state !== 'loading');
   }, [
     portadaInfoState,
     resumenFlotaPorVehiculoState,
@@ -136,49 +136,53 @@ const ReporteFIT = () => {
         <button
           className={`rounded-2xl p-3 my-2 text-xl transition-colors duration-300 ${
             allApisLoaded
-              ? "bg-black text-white hover:bg-gray-800 cursor-pointer fixed top-0 z-50"
-              : "bg-gray-500 text-black cursor-not-allowed opacity-50 fixed top-0 z-50"
+              ? 'bg-black text-white hover:bg-gray-800 cursor-pointer fixed top-0 z-50'
+              : 'bg-gray-500 text-black cursor-not-allowed opacity-50 fixed top-0 z-50'
           }`}
           disabled={!allApisLoaded}
           onClick={() => {
             handlePrint(null, () => contentToPrint.current);
           }}
         >
-          {allApisLoaded ? "Descargar PDF" : "Cargando PDF..."}
+          {allApisLoaded ? 'Descargar PDF' : 'Cargando PDF...'}
         </button>
       </div>
       <main
         ref={contentToPrint}
         style={{
-          padding: "20px",
-          margin: "30px 20px 20px 20px",
+          padding: '20px',
+          margin: '30px 20px 20px 20px',
         }}
       >
         <section className="page">
-          <img
-            src={aetoPng}
-            className="logo mx-auto my-[30px]"
-            alt="Logo-aeto"
-          />
+          {portadaInfoState === 'loading' && <LoadingIndicator />}
+          {portadaInfoState === 'loaded' && (
+            <img
+              src={portadaInfo.imagen ?? aetoPng}
+              className="logo mx-auto my-[30px]"
+              alt="Logo-aeto"
+            />
+          )}
+
           <h1 className="mx-auto my-10 text-center">
             Análisis de la inspección de flota (FIT)
           </h1>
           <h2 className="text-2xl text-center">
-            Para la compañía{" "}
-            {portadaInfoState === "loaded" && portadaInfo?.compania},
+            Para la compañía{' '}
+            {portadaInfoState === 'loaded' && portadaInfo?.compania},
             <span className="ml-1 text-center">
-              {portadaInfoState === "loaded" && portadaInfo?.ubicaciones}
+              {portadaInfoState === 'loaded' && portadaInfo?.ubicaciones}
             </span>
           </h2>
           <h2 className="text-xl text-center">
-            {portadaInfoState === "loaded" && portadaInfo?.fechas}
+            {portadaInfoState === 'loaded' && portadaInfo?.fechas}
           </h2>
-          {portadaInfoState === "loading" && <LoadingIndicator />}
-          {portadaInfoState === "loaded" && portadaInfo?.imagen && (
+
+          {portadaInfo.imagen && (
             <img
-              src={portadaInfo?.imagen}
-              alt="logo de la compañia"
-              className="max-w-[1000px] h-[500px] my-[60px] mx-auto object-contain"
+              src={aetoPng}
+              className="logo mx-auto my-[30px] mt-[300px] scale-[.3] "
+              alt="Logo-aeto"
             />
           )}
         </section>
@@ -304,9 +308,9 @@ const ReporteFIT = () => {
                 Resumen de la flota por clase de vehículo
               </h2>
             </header>
-            {resumenFlotaPorVehiculoState === "loading" && <LoadingIndicator />}
+            {resumenFlotaPorVehiculoState === 'loading' && <LoadingIndicator />}
 
-            {resumenFlotaPorVehiculoState === "loaded" &&
+            {resumenFlotaPorVehiculoState === 'loaded' &&
               sucursales.map((suc) => (
                 <div key={suc}>
                   <div className="section-header">
@@ -360,8 +364,8 @@ const ReporteFIT = () => {
             <h2 className="text-xl mt-10" id="resumen-localizaciones">
               Resumen de localizaciones por clase de vehículo
             </h2>
-            {resumenLocalizacionState === "loading" && <LoadingIndicator />}
-            {resumenLocalizacionState === "loaded" && (
+            {resumenLocalizacionState === 'loading' && <LoadingIndicator />}
+            {resumenLocalizacionState === 'loaded' && (
               <>
                 {sucursales.map((suc) => (
                   <div key={suc}>
@@ -420,9 +424,9 @@ const ReporteFIT = () => {
             </h2>
           </header>
 
-          {inspeccionesState === "loading" && <LoadingIndicator />}
+          {inspeccionesState === 'loading' && <LoadingIndicator />}
 
-          {inspeccionesState === "loaded" &&
+          {inspeccionesState === 'loaded' &&
             sucursales.map((ub) => (
               <div key={ub}>
                 <header className="mb-[1rem] section-header">{ub}</header>
@@ -456,7 +460,7 @@ const ReporteFIT = () => {
                               </tr>
                               <tr>
                                 <td>Odómetro</td>
-                                <td>{inspeccionWrapper.km ?? "None"}</td>
+                                <td>{inspeccionWrapper.km ?? 'None'}</td>
                               </tr>
                               <tr>
                                 <td>Clase de vehículo</td>
@@ -532,10 +536,10 @@ const ReporteFIT = () => {
                                                       .url
                                                   }
                                                 >
-                                                  {" "}
-                                                  - {inspeccion.posicion} :{" "}
+                                                  {' '}
+                                                  - {inspeccion.posicion} :{' '}
                                                   <span className="text-blue-600 underline">
-                                                    {" "}
+                                                    {' '}
                                                     {
                                                       inspeccion.imagen[imagen]
                                                         .observacion
@@ -556,11 +560,29 @@ const ReporteFIT = () => {
                         <div className="car detail gap-[4rem] flex flex-col ">
                           {inspeccionWrapper.tires?.map((eje, i) => {
                             if (eje.length === 1)
-                              return <SingleTireAxle eje={eje} key={i}/>;
+                              return <SingleTireAxle eje={eje} key={i} />;
                             if (eje.length === 2)
-                              return <DoubleTireAxle eje={eje} key={i} fit={true} presionAxle={inspeccionWrapper.presiones_establecidas[0]}/>;
+                              return (
+                                <DoubleTireAxle
+                                  eje={eje}
+                                  key={i}
+                                  fit={true}
+                                  presionAxle={
+                                    inspeccionWrapper.presiones_establecidas[0]
+                                  }
+                                />
+                              );
                             if (eje.length === 4)
-                              return <QuadTireAxle eje={eje} key={i} fit={true} presionAxle={inspeccionWrapper.presiones_establecidas[0]}/>;
+                              return (
+                                <QuadTireAxle
+                                  eje={eje}
+                                  key={i}
+                                  fit={true}
+                                  presionAxle={
+                                    inspeccionWrapper.presiones_establecidas[0]
+                                  }
+                                />
+                              );
                           })}
                         </div>
                       </div>
@@ -575,8 +597,8 @@ const ReporteFIT = () => {
               Resumen de observaciones
             </h2>
           </header>
-          {resumenObservacionesState === "loading" && <LoadingIndicator />}
-          {resumenObservacionesState === "loaded" && (
+          {resumenObservacionesState === 'loading' && <LoadingIndicator />}
+          {resumenObservacionesState === 'loaded' && (
             <article>
               <table className="w-full">
                 <thead>
@@ -593,7 +615,7 @@ const ReporteFIT = () => {
                         className={
                           ob.observaciones__icono
                             ? `${ob.observaciones__icono} text-5xl text-center`
-                            : "icon-thumb_down text-6xl text-center"
+                            : 'icon-thumb_down text-6xl text-center'
                         }
                       ></td>
                       <td>{ob.observaciones__observacion}</td>
@@ -612,8 +634,8 @@ const ReporteFIT = () => {
                 Dimensiones de neumáticos
               </h2>
             </header>
-            {dimensionesLlantaState === "loading" && <LoadingIndicator />}
-            {dimensionesLlantaState === "loaded" && (
+            {dimensionesLlantaState === 'loading' && <LoadingIndicator />}
+            {dimensionesLlantaState === 'loaded' && (
               <Chart
                 chartType="PieChart"
                 options={{ is3D: true }}
@@ -627,12 +649,12 @@ const ReporteFIT = () => {
           <article>
             <header>
               <h2 className="text-xl mt-10" id="marca-neumatico">
-                {" "}
+                {' '}
                 Marca de un neumáticos
               </h2>
             </header>
-            {marcasLlantaState === "loading" && <LoadingIndicator />}
-            {marcasLlantaState === "loaded" && (
+            {marcasLlantaState === 'loading' && <LoadingIndicator />}
+            {marcasLlantaState === 'loaded' && (
               <Chart
                 chartType="PieChart"
                 options={{ is3D: true }}
@@ -651,8 +673,8 @@ const ReporteFIT = () => {
                 Vida de neumáticos
               </h2>
             </header>
-            {vidaLLantaState === "loading" && <LoadingIndicator />}
-            {vidaLLantaState === "loaded" && (
+            {vidaLLantaState === 'loading' && <LoadingIndicator />}
+            {vidaLLantaState === 'loaded' && (
               <Chart
                 chartType="PieChart"
                 options={{ is3D: true }}
@@ -669,8 +691,8 @@ const ReporteFIT = () => {
                 Analisis de presión
               </h2>
             </header>
-            {analisisPresionState === "loading" && <LoadingIndicator />}
-            {analisisPresionState === "loaded" && (
+            {analisisPresionState === 'loading' && <LoadingIndicator />}
+            {analisisPresionState === 'loaded' && (
               <Chart
                 chartType="PieChart"
                 options={{ is3D: true }}
@@ -689,8 +711,8 @@ const ReporteFIT = () => {
                 Presión por tipo de eje
               </h2>
             </header>
-            {presionTipoEjeState === "loading" && <LoadingIndicator />}
-            {presionTipoEjeState === "loaded" && (
+            {presionTipoEjeState === 'loading' && <LoadingIndicator />}
+            {presionTipoEjeState === 'loaded' && (
               <div className="flex flex-wrap">
                 <Chart
                   chartType="PieChart"
@@ -727,8 +749,8 @@ const ReporteFIT = () => {
                 Análisis de profundidad
               </h2>
             </header>
-            {analisisProfundidadState === "loading" && <LoadingIndicator />}
-            {analisisProfundidadState === "loaded" && (
+            {analisisProfundidadState === 'loading' && <LoadingIndicator />}
+            {analisisProfundidadState === 'loaded' && (
               <div className="flex justify-center  mb-10 ">
                 <Chart
                   chartType="Bar"
@@ -750,8 +772,8 @@ const ReporteFIT = () => {
             </h2>
           </header>
           Nota: {perdidaMensual} mm de desgaste mensual
-          {cambiosRecomendadosState === "loading" && <LoadingIndicator />}
-          {cambiosRecomendadosState === "loaded" && (
+          {cambiosRecomendadosState === 'loading' && <LoadingIndicator />}
+          {cambiosRecomendadosState === 'loaded' && (
             <article className="my-10">
               <div>
                 <h3 className="text-xl mt-10">Actuales</h3>
@@ -787,7 +809,7 @@ const ReporteFIT = () => {
                           <td>
                             {cambio.defectos.length > 0
                               ? cambio.defectos.map((defecto) => `${defecto}, `)
-                              : "..."}
+                              : '...'}
                           </td>
                         </tr>
                       )
@@ -826,7 +848,7 @@ const ReporteFIT = () => {
                           <td>
                             {cambio.defectos.length > 0
                               ? cambio.defectos.map((defecto) => `${defecto}, `)
-                              : "..."}
+                              : '...'}
                           </td>
                         </tr>
                       )
@@ -874,8 +896,8 @@ const ReporteFIT = () => {
               </div>
             </article>
           )}
-          {cambiosRecomendados30State === "loading" && <LoadingIndicator />}
-          {cambiosRecomendados30State === "loaded" && (
+          {cambiosRecomendados30State === 'loading' && <LoadingIndicator />}
+          {cambiosRecomendados30State === 'loaded' && (
             <article className="my-10">
               <div>
                 <h3 className="text-xl mt-10">En 30 días</h3>
@@ -911,7 +933,7 @@ const ReporteFIT = () => {
                           <td>
                             {cambio.defectos.length > 0
                               ? cambio.defectos.map((defecto) => `${defecto}, `)
-                              : "..."}
+                              : '...'}
                           </td>
                         </tr>
                       )
@@ -950,7 +972,7 @@ const ReporteFIT = () => {
                           <td>
                             {cambio.defectos.length > 0
                               ? cambio.defectos.map((defecto) => `${defecto}, `)
-                              : "..."}
+                              : '...'}
                           </td>
                         </tr>
                       )
@@ -998,8 +1020,8 @@ const ReporteFIT = () => {
               </div>
             </article>
           )}
-          {cambiosRecomendados60State === "loading" && <LoadingIndicator />}
-          {cambiosRecomendados60State === "loaded" && (
+          {cambiosRecomendados60State === 'loading' && <LoadingIndicator />}
+          {cambiosRecomendados60State === 'loaded' && (
             <article className="my-10">
               <div>
                 <h3 className="text-xl mt-10">En 60 días</h3>
@@ -1035,7 +1057,7 @@ const ReporteFIT = () => {
                           <td>
                             {cambio.defectos.length > 0
                               ? cambio.defectos.map((defecto) => `${defecto}, `)
-                              : "..."}
+                              : '...'}
                           </td>
                         </tr>
                       )
@@ -1074,7 +1096,7 @@ const ReporteFIT = () => {
                           <td>
                             {cambio.defectos.length > 0
                               ? cambio.defectos.map((defecto) => `${defecto}, `)
-                              : "..."}
+                              : '...'}
                           </td>
                         </tr>
                       )
@@ -1115,7 +1137,7 @@ const ReporteFIT = () => {
                               ? cambio.defectos.map(
                                   (defecto: string) => `${defecto}, `
                                 )
-                              : "..."}
+                              : '...'}
                           </td>
                         </tr>
                       )
@@ -1182,8 +1204,8 @@ const ReporteFIT = () => {
               <h2 className="text-xl mt-10" id="observaciones-comunicar">
                 Observaciones a comunicar
               </h2>
-              {observacionesState === "loading" && <LoadingIndicator />}
-              {observacionesState === "loaded" && (
+              {observacionesState === 'loading' && <LoadingIndicator />}
+              {observacionesState === 'loaded' && (
                 <table className="w-full">
                   <thead>
                     <tr>
