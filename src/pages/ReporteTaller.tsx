@@ -1,19 +1,19 @@
-import '../css/base.css';
-import '../css/normalize.css';
-import '../css/icomoon/style.css';
-import '../css/reporteVehiculo.css';
-import aetoLogo from '../assets/aeto-logo.svg';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import "../css/base.css";
+import "../css/normalize.css";
+import "../css/icomoon/style.css";
+import "../css/reporteVehiculo.css";
+import aetoLogo from "../assets/aeto-logo.svg";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-import { Fragment, useRef } from 'react';
-import { useParams } from 'react-router-dom';
-import { useReactToPrint } from 'react-to-print';
+import { Fragment, useRef } from "react";
+import { useParams } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 
-import useGetWorkshopReport from '../hooks/reporte-taller/useGetWorkshopReport';
-import { TimeDifferenceBetweenDates } from '../utils/TimeDifferenceBetweenDates';
-import SingleTireAxle from '../components/workshop/axles/SingleTireAxle';
-import DoubleTireAxle from '../components/workshop/axles/DoubleTireAxle';
-import QuadTireAxle from '../components/workshop/axles/QuadTireAxle';
+import useGetWorkshopReport from "../hooks/reporte-taller/useGetWorkshopReport";
+import { TimeDifferenceBetweenDates } from "../utils/TimeDifferenceBetweenDates";
+import SingleTireAxle from "../components/workshop/axles/SingleTireAxle";
+import DoubleTireAxle from "../components/workshop/axles/DoubleTireAxle";
+import QuadTireAxle from "../components/workshop/axles/QuadTireAxle";
 
 const ReporteTaller = () => {
   const { reportId } = useParams();
@@ -118,30 +118,9 @@ const ReporteTaller = () => {
 
           <div className="config__container">
             {report.tires?.map((eje, i) => {
-              if (eje.length === 1)
-                return (
-                  <SingleTireAxle
-                    eje={eje}
-                    key={i}
-                    servicesTires={report.service_tires}
-                  />
-                );
-              if (eje.length === 2)
-                return (
-                  <DoubleTireAxle
-                    eje={eje}
-                    key={i}
-                    servicesTires={report.service_tires}
-                  />
-                );
-              if (eje.length === 4)
-                return (
-                  <QuadTireAxle
-                    eje={eje}
-                    key={i}
-                    servicesTires={report.service_tires}
-                  />
-                );
+              if (eje.length === 1) return <SingleTireAxle eje={eje} key={i} />;
+              if (eje.length === 2) return <DoubleTireAxle eje={eje} key={i} />;
+              if (eje.length === 4) return <QuadTireAxle eje={eje} key={i} />;
             })}
           </div>
         </main>
@@ -171,11 +150,11 @@ const ReporteTaller = () => {
 
                   {report.alineacion &&
                     report.inch_ejes.ejes[1] &&
-                    report.inch_ejes.ejes[1]?.before !== '' && (
+                    report.inch_ejes.ejes[1]?.before !== "" && (
                       <tr>
                         <td className="td-table">Eje N° 1</td>
                         <td className="td-table">
-                          Medida previa a la alineación:{' '}
+                          Medida previa a la alineación:{" "}
                           {report.inch_ejes.ejes[1]?.before}, Medida luego de la
                           alineación: {report.inch_ejes.ejes[1]?.after}
                         </td>
@@ -183,11 +162,11 @@ const ReporteTaller = () => {
                     )}
                   {report.alineacion &&
                     report.inch_ejes.ejes[2] &&
-                    report.inch_ejes.ejes[2]?.before !== '' && (
+                    report.inch_ejes.ejes[2]?.before !== "" && (
                       <tr>
                         <td className="td-table">Eje N° 2</td>
                         <td className="td-table">
-                          Medida previa a la alineación:{' '}
+                          Medida previa a la alineación:{" "}
                           {report.inch_ejes.ejes[2]?.before}, Medida luego de la
                           alineación: {report.inch_ejes.ejes[2]?.after}
                         </td>
@@ -195,11 +174,11 @@ const ReporteTaller = () => {
                     )}
                   {report.alineacion &&
                     report.inch_ejes.ejes[3] &&
-                    report.inch_ejes.ejes[3]?.before !== '' && (
+                    report.inch_ejes.ejes[3]?.before !== "" && (
                       <tr>
                         <td className="td-table">Eje N° 3</td>
                         <td className="td-table">
-                          Medida previa a la alineación:{' '}
+                          Medida previa a la alineación:{" "}
                           {report.inch_ejes.ejes[3]?.before}, Medida luego de la
                           alineación: {report.inch_ejes.ejes[3]?.after}
                         </td>
@@ -207,11 +186,11 @@ const ReporteTaller = () => {
                     )}
                   {report.alineacion &&
                     report.inch_ejes.ejes[4] &&
-                    report.inch_ejes.ejes[4]?.before !== '' && (
+                    report.inch_ejes.ejes[4]?.before !== "" && (
                       <tr>
                         <td className="td-table">Eje N° 4</td>
                         <td className="td-table">
-                          Medida previa a la alineación:{' '}
+                          Medida previa a la alineación:{" "}
                           {report.inch_ejes.ejes[4]?.before}, Medida luego de la
                           alineación: {report.inch_ejes.ejes[4]?.after}
                         </td>
@@ -237,7 +216,7 @@ const ReporteTaller = () => {
                                 {llanta.presion_entrada !== 9260 &&
                                 llanta.presion_entrada !== llanta.presion_salida
                                   ? `, presión de entrada: ${llanta.presion_entrada}PSI, presión de salida ${llanta.presion_salida}PSI`
-                                  : ''}
+                                  : ""}
                               </td>
                             </tr>
                           )}
@@ -277,8 +256,8 @@ const ReporteTaller = () => {
                             <tr>
                               <td className="td-table">{llanta.posicion}</td>
                               <td className="td-table">
-                                La llanta de número económico:{' '}
-                                {llanta.numero_economico} se rotó con la llanta:{' '}
+                                La llanta de número económico:{" "}
+                                {llanta.numero_economico} se rotó con la llanta:{" "}
                                 {llanta.rotar_numero_economico}
                               </td>
                             </tr>
@@ -288,7 +267,7 @@ const ReporteTaller = () => {
                               <td className="td-table">{llanta.posicion}</td>
                               <td className="td-table">
                                 La llanta {llanta.numero_economico} se desmontó
-                                en el almacen{' '}
+                                en el almacen{" "}
                                 {llanta.desmontar_inventario_llanta} y se colocó
                                 la llanta {llanta.desmontar_llanta_economico}
                               </td>
@@ -298,7 +277,7 @@ const ReporteTaller = () => {
                             <tr>
                               <td className="td-table">{llanta.posicion}</td>
                               <td className="td-table">
-                                Se le realizó un servicio carretero a la llanta{' '}
+                                Se le realizó un servicio carretero a la llanta{" "}
                                 {llanta.numero_economico}
                               </td>
                             </tr>
@@ -322,8 +301,8 @@ const ReporteTaller = () => {
                         Vehiculo {report.numero_economico}
                       </td>
                       <td className="td-table">
-                        Nuevo kilometraje de hubometro:{' '}
-                        {report.km_cambio_hubometro}{' '}
+                        Nuevo kilometraje de hubometro:{" "}
+                        {report.km_cambio_hubometro}{" "}
                       </td>
                     </tr>
                   )}
@@ -344,10 +323,10 @@ const ReporteTaller = () => {
                               <td className="td-table">{llanta.posicion}</td>
                               <td className="td-table">
                                 Se infló la llanta
-                                {llanta.presion_entrada !== 926 &&
+                                {llanta.presion_entrada !== 9260 &&
                                 llanta.presion_entrada !== llanta.presion_salida
-                                  ? `, presión de entrada: ${87}PSI, presión de salida ${llanta.presion_salida}PSI`
-                                  : ''}
+                                  ? `, presión de entrada: ${llanta.presion_entrada}PSI, presión de salida ${llanta.presion_salida}PSI`
+                                  : ""}
                               </td>
                             </tr>
                           )}
@@ -387,8 +366,8 @@ const ReporteTaller = () => {
                             <tr>
                               <td className="td-table">{llanta.posicion}</td>
                               <td className="td-table">
-                                La llanta de número económico:{' '}
-                                {llanta.numero_economico} se rotó con la llanta:{' '}
+                                La llanta de número económico:{" "}
+                                {llanta.numero_economico} se rotó con la llanta:{" "}
                                 {llanta.rotar_numero_economico}
                               </td>
                             </tr>
@@ -398,7 +377,7 @@ const ReporteTaller = () => {
                               <td className="td-table">{llanta.posicion}</td>
                               <td className="td-table">
                                 La llanta {llanta.numero_economico} se desmontó
-                                en el almacen{' '}
+                                en el almacen{" "}
                                 {llanta.desmontar_inventario_llanta} y se colocó
                                 la llanta {llanta.desmontar_llanta_economico}
                               </td>
@@ -408,7 +387,7 @@ const ReporteTaller = () => {
                             <tr>
                               <td className="td-table">{llanta.posicion}</td>
                               <td className="td-table">
-                                Se le realizó un servicio carretero a la llanta{' '}
+                                Se le realizó un servicio carretero a la llanta{" "}
                                 {llanta.numero_economico}
                               </td>
                             </tr>

@@ -19,7 +19,7 @@ export interface WorkshopReport {
   marca: string;
   modelo: string;
   numero_economico: string;
-  service_tires: ServiceTire[];
+  service_tires: Llanta[];
   tires: Llanta[][]
   ubicacion: number;
   ubicacion_nombre: string;
@@ -37,7 +37,7 @@ export interface Configuracion {
   numero_llantas: number;
 }
 
-export interface Llanta {
+export interface Llanta extends ServiceTire {
   color_buttom: string;
   color_middle: string;
   color_top: string;
@@ -50,12 +50,24 @@ export interface Llanta {
   presion_actual: number;
   presion?: number;
   positionString: string
-  producto: string;
   producto_nombre?: string;
   profundidad_central: number | null;
   profundidad_derecha: number | null;
   profundidad_izquierda: number | null;
   tipo_de_eje: string;
+  desmontar_producto_nombre: string | null;
+  color_medio_desmontar: string | null;
+  color_medio_rotar: string | null;
+  color_medio: string
+  color_presion_desmontar: string| null;
+  color_presion_rotar: string | null;
+  color_presion: string | null;
+  color_profundidad_desmontar: string | null;
+  color_profundidad_rotar: string | null;
+  color_profundidad: string | null;
+  desmontar_presion_salida: number | null;
+  rotar_presion_salida: number | null
+
   dimension?:string;
 }
 export interface Tire extends Llanta {

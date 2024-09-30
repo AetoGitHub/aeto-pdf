@@ -1,17 +1,15 @@
-import { Llanta, ServiceTire } from '../../../models/Workshop';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { Llanta } from "../../../models/Workshop";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const QuadTireAxle = ({
   eje,
   fit,
   presionAxle,
-  servicesTires,
 }: {
   eje: Llanta[];
   fit?: boolean;
   presionAxle?: number;
-  servicesTires?: ServiceTire[];
 }) => {
   return (
     <>
@@ -19,31 +17,52 @@ const QuadTireAxle = ({
         <div className="double-tire">
           <div className="tire__content">
             <div className="tire__economic-top">
-              {eje[0]?.numero_economico} |
-              {eje[0]?.producto_nombre ?? eje[0]?.producto}
+              {eje[0]?.desmontar_numero_economico ??
+                eje[0]?.rotar_numero_economico ??
+                eje[0].numero_economico}{" "}
+              |{" "}
+              {eje[0]?.desmontar_producto_nombre ??
+                eje[0]?.rotar_producto_nombre ??
+                eje[0]?.producto_nombre ??
+                eje[0]?.producto}
             </div>
             {fit && <ArrowUpwardIcon />}
             <div className="tire">
-              <div className={`tire__tag pos ${eje[0]?.color_middle}`}>
+              <div
+                className={`tire__tag pos ${
+                  eje[0]?.color_medio_desmontar ??
+                  eje[0]?.color_medio_rotar ??
+                  eje[0]?.color_medio
+                }`}
+              >
                 {eje[0]?.positionString}
               </div>
-              <div className={`tire__tag up ${eje[0]?.color_top}`}>
-                {servicesTires?.find(
-                  (tire) => tire.llanta_original === eje[0].id
-                )?.presion_salida === 9260 ||
-                servicesTires?.find(
-                  (tire) => tire.llanta_original === eje[0].id
-                )?.presion_salida === undefined
-                  ? '---'
-                  : servicesTires?.find(
-                      (tire) => tire.llanta_original === eje[0].id
-                    )?.presion_salida ?? "---"}
+              <div
+                className={`tire__tag up ${
+                  eje[0]?.color_presion_desmontar ??
+                  eje[0]?.color_presion_rotar ??
+                  eje[0]?.color_presion
+                }`}
+              >
+              {(eje[0].desmontar_presion_salida ??
+                eje[0].rotar_presion_salida ??
+                eje[0].presion_salida) === 9260
+                ? "---"
+                : eje[0].desmontar_presion_salida ??
+                  eje[0].rotar_presion_salida ??
+                  eje[0].presion_salida}
               </div>
               <span className="icon-llanta-outline icon-"></span>
-              <div className={`tire__tag down ${eje[0].color_buttom}`}>
-                {servicesTires?.find(
-                  (tire) => tire.llanta_original === eje[0].id
-                )?.min_profundidad ?? eje[0]?.profundidad_central}
+              <div
+                className={`tire__tag down ${
+                  eje[0]?.color_profundidad_desmontar ??
+                  eje[0]?.color_profundidad_rotar ??
+                  eje[0]?.color_profundidad
+                }`}
+              >
+                {eje[0].desmontar_min_profundidad ??
+                  eje[0].rotar_min_profundidad ??
+                  eje[0].min_profundidad}
               </div>
             </div>
             {fit && <div className="h-[18px]" />}
@@ -52,32 +71,53 @@ const QuadTireAxle = ({
           <div className="tire__content">
             {fit && <div className="h-[18px]" />}
             <div className="tire">
-              <div className={`tire__tag pos ${eje[1]?.color_middle}`}>
+              <div
+                className={`tire__tag pos ${
+                  eje[1]?.color_medio_desmontar ??
+                  eje[1]?.color_medio_rotar ??
+                  eje[1]?.color_medio
+                }`}
+              >
                 {eje[1]?.positionString}
               </div>
-              <div className={`tire__tag up ${eje[1]?.color_top}`}>
-                {servicesTires?.find(
-                  (tire) => tire.llanta_original === eje[1].id
-                )?.presion_salida === 9260 ||
-                servicesTires?.find(
-                  (tire) => tire.llanta_original === eje[1].id
-                )?.presion_salida === undefined
-                  ? '---'
-                  : servicesTires?.find(
-                      (tire) => tire.llanta_original === eje[1].id
-                    )?.presion_salida ?? "---"}
+              <div
+                className={`tire__tag up ${
+                  eje[1]?.color_presion_desmontar ??
+                  eje[1]?.color_presion_rotar ??
+                  eje[1]?.color_presion
+                }`}
+              >
+              {(eje[1].desmontar_presion_salida ??
+                eje[1].rotar_presion_salida ??
+                eje[1].presion_salida) === 9260
+                ? "---"
+                : eje[1].desmontar_presion_salida ??
+                  eje[1].rotar_presion_salida ??
+                  eje[1].presion_salida}
               </div>
               <span className="icon-llanta-outline"></span>
-              <div className={`tire__tag down ${eje[1].color_buttom}`}>
-                {servicesTires?.find(
-                  (tire) => tire.llanta_original === eje[1].id
-                )?.min_profundidad ?? eje[1]?.profundidad_central}
+              <div
+                className={`tire__tag down ${
+                  eje[1]?.color_profundidad_desmontar ??
+                  eje[1]?.color_profundidad_rotar ??
+                  eje[1]?.color_profundidad
+                }`}
+              >
+                {eje[1].desmontar_min_profundidad ??
+                  eje[1].rotar_min_profundidad ??
+                  eje[1].min_profundidad}
               </div>
             </div>
             {fit && <ArrowDownwardIcon />}
             <div className="tire__economic-bottom">
-              {eje[1]?.numero_economico} |{' '}
-              {eje[1]?.producto_nombre ?? eje[1]?.producto}
+              {eje[1]?.desmontar_numero_economico ??
+                eje[1]?.rotar_numero_economico ??
+                eje[1].numero_economico}{" "}
+              |{" "}
+              {eje[1]?.desmontar_producto_nombre ??
+                eje[1]?.rotar_producto_nombre ??
+                eje[1]?.producto_nombre ??
+                eje[1]?.producto}
             </div>
           </div>
         </div>
@@ -98,33 +138,54 @@ const QuadTireAxle = ({
           {fit && <div className="h-[18px]" />}
           <div className="tire__content">
             <div className="tire__economic-top">
-              {eje[2]?.numero_economico} |{' '}
-              {eje[2]?.producto_nombre ?? eje[2]?.producto}
+              {eje[2]?.desmontar_numero_economico ??
+                eje[2]?.rotar_numero_economico ??
+                eje[2].numero_economico}{" "}
+              |{" "}
+              {eje[2]?.desmontar_producto_nombre ??
+                eje[2]?.rotar_producto_nombre ??
+                eje[2]?.producto_nombre ??
+                eje[2]?.producto}
             </div>
             {fit && <ArrowUpwardIcon />}
 
             <div className="tire__content">
               <div className="tire">
-                <div className={`tire__tag pos ${eje[2]?.color_middle}`}>
+                <div
+                  className={`tire__tag pos ${
+                    eje[2]?.color_medio_desmontar ??
+                    eje[2]?.color_medio_rotar ??
+                    eje[2]?.color_medio
+                  }`}
+                >
                   {eje[2]?.positionString}
                 </div>
-                <div className={`tire__tag up ${eje[2]?.color_top}`}>
-                  {servicesTires?.find(
-                    (tire) => tire.llanta_original === eje[2].id
-                  )?.presion_salida === 9260 ||
-                  servicesTires?.find(
-                    (tire) => tire.llanta_original === eje[2].id
-                  )?.presion_salida === undefined
-                    ? '---'
-                    : servicesTires?.find(
-                        (tire) => tire.llanta_original === eje[2].id
-                      )?.presion_salida ?? "---"}
+                <div
+                  className={`tire__tag up ${
+                    eje[2]?.color_presion_desmontar ??
+                    eje[2]?.color_presion_rotar ??
+                    eje[2]?.color_presion
+                  }`}
+                >
+              {(eje[2].desmontar_presion_salida ??
+                eje[2].rotar_presion_salida ??
+                eje[2].presion_salida) === 9260
+                ? "---"
+                : eje[2].desmontar_presion_salida ??
+                  eje[2].rotar_presion_salida ??
+                  eje[2].presion_salida}
                 </div>
                 <span className="icon-llanta-outline"></span>
-                <div className={`tire__tag down ${eje[2].color_buttom}`}>
-                  {servicesTires?.find(
-                    (tire) => tire.llanta_original === eje[2].id
-                  )?.min_profundidad ?? eje[2]?.profundidad_central}
+                <div
+                  className={`tire__tag down ${
+                    eje[2]?.color_profundidad_desmontar ??
+                    eje[2]?.color_profundidad_rotar ??
+                    eje[2]?.color_profundidad
+                  }`}
+                >
+                  {eje[2].desmontar_min_profundidad ??
+                    eje[2].rotar_min_profundidad ??
+                    eje[2].min_profundidad}
                 </div>
               </div>
             </div>
@@ -134,33 +195,54 @@ const QuadTireAxle = ({
             {fit && <div className="h-[18px]" />}
 
             <div className="tire">
-              <div className={`tire__tag pos ${eje[3]?.color_middle}`}>
+              <div
+                className={`tire__tag pos ${
+                  eje[3]?.color_medio_desmontar ??
+                  eje[3]?.color_medio_rotar ??
+                  eje[3]?.color_medio
+                }`}
+              >
                 {eje[3]?.positionString}
               </div>
-              <div className={`tire__tag up ${eje[3]?.color_top}`}>
-                {servicesTires?.find(
-                  (tire) => tire.llanta_original === eje[3].id
-                )?.presion_salida === 9260 ||
-                servicesTires?.find(
-                  (tire) => tire.llanta_original === eje[3].id
-                )?.presion_salida === undefined
-                  ? '---'
-                  : servicesTires?.find(
-                      (tire) => tire.llanta_original === eje[3].id
-                    )?.presion_salida ?? "---"}
+              <div
+                className={`tire__tag up ${
+                  eje[3]?.color_presion_desmontar ??
+                  eje[3]?.color_presion_rotar ??
+                  eje[3]?.color_presion
+                }`}
+              >
+              {(eje[3].desmontar_presion_salida ??
+                eje[3].rotar_presion_salida ??
+                eje[3].presion_salida) === 9260
+                ? "---"
+                : eje[3].desmontar_presion_salida ??
+                  eje[3].rotar_presion_salida ??
+                  eje[3].presion_salida}
               </div>
               <span className="icon-llanta-outline"></span>
-              <div className={`tire__tag down ${eje[3].color_buttom}`}>
-                {servicesTires?.find(
-                  (tire) => tire.llanta_original === eje[3].id
-                )?.min_profundidad ?? eje[3]?.profundidad_central}
+              <div
+                className={`tire__tag down ${
+                  eje[3]?.color_profundidad_desmontar ??
+                  eje[3]?.color_profundidad_rotar ??
+                  eje[3]?.color_profundidad
+                }`}
+              >
+                {eje[3].desmontar_min_profundidad ??
+                  eje[3].rotar_min_profundidad ??
+                  eje[3].min_profundidad}
               </div>
             </div>
 
             {fit && <ArrowDownwardIcon />}
             <div className="tire__economic-bottom">
-              {eje[3]?.numero_economico} |{' '}
-              {eje[3]?.producto_nombre ?? eje[3]?.producto}
+              {eje[3]?.desmontar_numero_economico ??
+                eje[3]?.rotar_numero_economico ??
+                eje[3].numero_economico}{" "}
+              |{" "}
+              {eje[3]?.desmontar_producto_nombre ??
+                eje[3]?.rotar_producto_nombre ??
+                eje[3]?.producto_nombre ??
+                eje[3]?.producto}
             </div>
           </div>
         </div>

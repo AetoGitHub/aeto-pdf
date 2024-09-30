@@ -10,7 +10,7 @@ export const getVehicleDiagram = (vehicle: WorkshopReport) => {
 
   let counter: number = 1;
 
-  const tires = vehicle.configuracion.llantas.map((tire: Llanta) => {
+  const tires = vehicle.service_tires.map((tire: Llanta) => {
     const { posicion, ...restTire } = tire;
 
     const position = getTirePosition(posicion);
