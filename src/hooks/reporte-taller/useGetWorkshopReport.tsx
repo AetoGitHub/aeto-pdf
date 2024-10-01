@@ -12,7 +12,7 @@ const useGetWorkshopReport =  (id: string | undefined) => {
     const res = await axios.get(
         `${API_BASE_URL}/api/servicio/retrieve/vehicle/report/${id}/`
       );
-      const diagram = getVehicleDiagram(res.data)
+      const diagram = getVehicleDiagram(res.data, true)
       setReport(diagram);
       console.log(diagram)
   }

@@ -1,8 +1,10 @@
 import { getTirePosition } from './getTirePosition';
-import { Llanta, WorkshopReport, Tire} from '../models/Workshop';
+import { Llanta, WorkshopReport, Tire } from '../models/Workshop';
 
-export const getVehicleDiagram = (vehicle: WorkshopReport) => {
-
+export const getVehicleDiagram = (
+  vehicle: WorkshopReport,
+  workshop = false
+) => {
   let ejes: Tire[][] = Array.from(
     Array(vehicle.configuracion.configuracion.split('.').length),
     () => []
@@ -10,19 +12,37 @@ export const getVehicleDiagram = (vehicle: WorkshopReport) => {
 
   let counter: number = 1;
 
-  const tires = vehicle.service_tires.map((tire: Llanta) => {
-    const { posicion, ...restTire } = tire;
+  let tires;
 
-    const position = getTirePosition(posicion);
+  if (workshop) {
+    tires = vehicle.service_tires.map((tire: Llanta) => {
+      const { posicion, ...restTire } = tire;
 
-    if (!position) throw Error('Invalid position');
+      const position = getTirePosition(posicion);
 
-    return {
-      ...restTire,
-      position,
-      positionString: posicion,
-    };
-  });
+      if (!position) throw Error('Invalid position');
+
+      return {
+        ...restTire,
+        position,
+        positionString: posicion,
+      };
+    });
+  } else {
+    tires = vehicle.configuracion.llantas.map((tire: Llanta) => {
+      const { posicion, ...restTire } = tire;
+
+      const position = getTirePosition(posicion);
+
+      if (!position) throw Error('Invalid position');
+
+      return {
+        ...restTire,
+        position,
+        positionString: posicion,
+      };
+    });
+  }
 
   ejes.forEach((eje) => {
     tires.forEach((llanta) => {
@@ -67,7 +87,7 @@ export const getVehicleDiagram = (vehicle: WorkshopReport) => {
           default:
             break;
         }
-        
+
         return (eje = tempEje);
       });
     }
