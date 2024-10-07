@@ -27,6 +27,10 @@ export interface WorkshopReport {
   usuario__username: string;
   vehiculo: number;
   version: number;
+  correccion_km: boolean;
+  reparacion_de_autoinflado: boolean;
+  repacion_rodamiento: boolean;
+  reparacion_vehiculo: boolean;
 }
 
 export interface Configuracion {
