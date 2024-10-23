@@ -291,7 +291,7 @@ const ReporteTaller = () => {
                               <td className='td-table'>
                                 La llanta {llanta.numero_economico} se desmontó
                                 en el almacen{' '}
-                                {llanta.desmontar_inventario_llanta} y se colocó
+                                {llanta.inventario_desmontaje} y se colocó
                                 la llanta {llanta.desmontar_llanta_economico}
                               </td>
                             </tr>
@@ -401,7 +401,7 @@ const ReporteTaller = () => {
                               <td className='td-table'>
                                 La llanta {llanta.numero_economico} se desmontó
                                 en el almacen{' '}
-                                {llanta.desmontar_inventario_llanta} y se colocó
+                                {llanta.inventario_desmontaje} y se colocó
                                 la llanta {llanta.desmontar_llanta_economico}
                               </td>
                             </tr>
