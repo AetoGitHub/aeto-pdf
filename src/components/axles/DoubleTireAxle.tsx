@@ -69,7 +69,7 @@ const DoubleTireAxle = ({
         </div>
 
         <div className="tire__content">
-          <div className="tire__economic-top">
+          <div className="tire__economic-top ml-[-75px]">
             {eje[1]?.numero_economico} |{' '}
             {eje[0]?.producto_nombre ?? eje[0]?.producto}
           </div>

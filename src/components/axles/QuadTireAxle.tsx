@@ -68,7 +68,7 @@ const QuadTireAxle = ({
               </div>
             </div>
             {fit && <ArrowDownwardIcon />}
-            <div className="tire__economic-bottom">
+            <div className="tire__economic-bottom ml-[-45px]">
               {eje[1]?.numero_economico} |{' '}
               {eje[1]?.producto_nombre ?? eje[1]?.producto}
             </div>
@@ -90,7 +90,7 @@ const QuadTireAxle = ({
         <div className="double-tire">
           {fit && <div className="h-[18px]" />}
           <div className="tire__content">
-            <div className="tire__economic-top">
+            <div className="tire__economic-top ml-[-35px]">
               {eje[2]?.numero_economico} |{' '}
               {eje[2]?.producto_nombre ?? eje[2]?.producto}
             </div>
@@ -133,7 +133,7 @@ const QuadTireAxle = ({
             </div>
 
             {fit && <ArrowDownwardIcon />}
-            <div className="tire__economic-bottom">
+            <div className="tire__economic-bottom ml-[-65px]">
               {eje[3]?.numero_economico} |{' '}
               {eje[3]?.producto_nombre ?? eje[3]?.producto}
             </div>
