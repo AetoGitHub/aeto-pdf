@@ -71,7 +71,8 @@ export interface Llanta extends ServiceTire {
   color_profundidad: string | null;
   desmontar_presion_salida: number | null;
   rotar_presion_salida: number | null
-
+  desmontar_empty_tire: boolean;
+  llanta_original_empty: boolean;
   dimension?:string;
 }
 export interface Tire extends Llanta {

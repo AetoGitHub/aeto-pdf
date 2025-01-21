@@ -289,10 +289,14 @@ const ReporteTaller = () => {
                             <tr>
                               <td className='td-table'>{llanta.posicion}</td>
                               <td className='td-table'>
-                                La llanta {llanta.numero_economico} se desmontó
-                                en el almacen{' '}
-                                {llanta.inventario_desmontaje} y se colocó
-                                la llanta {llanta.desmontar_llanta_economico}
+                                {llanta.llanta_original_empty
+                                  ? 'La llanta vacía se desmontó'
+                                  : `La llanta ${llanta.numero_economico} se desmontó`}
+                                en el almacen {llanta.inventario_desmontaje} y
+                                se colocó{' '}
+                                {llanta.desmontar_empty_tire
+                                  ? 'una llanta vacía'
+                                  : `la llanta ${llanta.desmontar_llanta_economico}`}
                               </td>
                             </tr>
                           )}
@@ -399,10 +403,14 @@ const ReporteTaller = () => {
                             <tr>
                               <td className='td-table'>{llanta.posicion}</td>
                               <td className='td-table'>
-                                La llanta {llanta.numero_economico} se desmontó
-                                en el almacen{' '}
-                                {llanta.inventario_desmontaje} y se colocó
-                                la llanta {llanta.desmontar_llanta_economico}
+                              {llanta.llanta_original_empty
+                                  ? 'La llanta vacía se desmontó'
+                                  : `La llanta ${llanta.numero_economico} se desmontó`}
+                                en el almacen {llanta.inventario_desmontaje} y
+                                se colocó{' '}
+                                {llanta.desmontar_empty_tire
+                                  ? 'una llanta vacía'
+                                  : `la llanta ${llanta.desmontar_llanta_economico}`}
                               </td>
                             </tr>
                           )}
