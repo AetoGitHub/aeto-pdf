@@ -290,8 +290,8 @@ const ReporteTaller = () => {
                               <td className='td-table'>{llanta.posicion}</td>
                               <td className='td-table'>
                                 {llanta.llanta_original_empty
-                                  ? 'La llanta vacía se desmontó'
-                                  : `La llanta ${llanta.numero_economico} se desmontó`}
+                                  ? 'La llanta vacía se desmontó '
+                                  : `La llanta ${llanta.numero_economico} se desmontó `}
                                 en el almacen {llanta.inventario_desmontaje} y
                                 se colocó{' '}
                                 {llanta.desmontar_empty_tire
@@ -404,8 +404,8 @@ const ReporteTaller = () => {
                               <td className='td-table'>{llanta.posicion}</td>
                               <td className='td-table'>
                               {llanta.llanta_original_empty
-                                  ? 'La llanta vacía se desmontó'
-                                  : `La llanta ${llanta.numero_economico} se desmontó`}
+                                  ? 'La llanta vacía se desmontó '
+                                  : `La llanta ${llanta.numero_economico} se desmontó `}
                                 en el almacen {llanta.inventario_desmontaje} y
                                 se colocó{' '}
                                 {llanta.desmontar_empty_tire
